@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "@lunariajs/core": "^0.1.1",
+    "open-cli": "^8.0.0",
+    "vitepress": "^1.3.1"
+  },
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "lunaria:build": "lunaria build",
+    "lunaria:preview": "lunaria preview",
+    "lunaria:open": "open-cli .vitepress/dist/_translations/index.html"
+  }
+}
