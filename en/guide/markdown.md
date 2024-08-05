@@ -597,72 +597,10 @@ const line3 = 'This is line 3'
 const line4 = 'This is line 4'
 ```
 
-## Import Code Snippets
-
-You can import code snippets from existing files via following syntax:
-
-```md
-<<< @/filepath
-```
-
-It also supports [line highlighting](#line-highlighting-in-code-blocks):
-
-```md
-<<< @/filepath{highlightLines}
-```
-
-**Input**
-
-```md
-<<< @/snippets/snippet.js{2}
-```
-
-**Code file**
-
-<<< @/snippets/snippet.js
-
-**Output**
-
-<<< @/snippets/snippet.js{2}
-
-::: tip
-The value of `@` corresponds to the source root. By default it's the VitePress project root, unless `srcDir` is configured. Alternatively, you can also import from relative paths:
-
-```md
-<<< ../snippets/snippet.js
-```
 
 :::
 
 You can also use a [VS Code region](https://code.visualstudio.com/docs/editor/codebasics#_folding) to only include the corresponding part of the code file. You can provide a custom region name after a `#` following the filepath:
-
-**Input**
-
-```md
-<<< @/snippets/snippet-with-region.js#snippet{1}
-```
-
-**Code file**
-
-<<< @/snippets/snippet-with-region.js
-
-**Output**
-
-<<< @/snippets/snippet-with-region.js#snippet{1}
-
-You can also specify the language inside the braces (`{}`) like this:
-
-```md
-<<< @/snippets/snippet.cs{c#}
-
-<!-- with line highlighting: -->
-
-<<< @/snippets/snippet.cs{1,2,4-6 c#}
-
-<!-- with line numbers: -->
-
-<<< @/snippets/snippet.cs{1,2,4-6 c#:line-numbers}
-```
 
 This is helpful if source language cannot be inferred from your file extension.
 
@@ -723,34 +661,6 @@ const config: UserConfig = {
 
 export default config
 ```
-
-:::
-
-You can also [import snippets](#import-code-snippets) in code groups:
-
-**Input**
-
-```md
-::: code-group
-
-<!-- filename is used as title by default -->
-
-<<< @/snippets/snippet.js
-
-<!-- you can provide a custom one too -->
-
-<<< @/snippets/snippet-with-region.js#snippet{1,2 ts:line-numbers} [snippet with region]
-
-:::
-```
-
-**Output**
-
-::: code-group
-
-<<< @/snippets/snippet.js
-
-<<< @/snippets/snippet-with-region.js#snippet{1,2 ts:line-numbers} [snippet with region]
 
 :::
 
