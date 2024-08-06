@@ -15,5 +15,8 @@
     "lunaria:build": "lunaria build",
     "lunaria:preview": "lunaria preview",
     "lunaria:open": "open-cli .vitepress/dist/_translations/index.html"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.9.5"
   }
 }
