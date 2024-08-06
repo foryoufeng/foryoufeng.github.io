@@ -1,12 +1,12 @@
 ---
 layout: home
 
-title: VitePress
-titleTemplate: Vite & Vue Powered Static Site Generator
+title: foryoufeng
+titleTemplate: foryoufeng blog
 
 hero:
-  name: VitePress
-  text: Vite & Vue Powered Static Site Generator
+  name: foryoufeng
+  text: foryoufeng blog
   tagline: Markdown to Beautiful Docs in Minutes
   actions:
     - theme: brand
@@ -19,8 +19,8 @@ hero:
       text: GitHub
       link: https://github.com/vuejs/vitepress
   image:
-    src: /vitepress-logo-large.webp
-    alt: VitePress
+    src: https://avatars.githubusercontent.com/u/6702914?v=4
+    alt: foryoufeng
 
 features:
   - icon: 📝
