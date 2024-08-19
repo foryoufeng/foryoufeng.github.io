@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 import { search as zhSearch } from './zh'
 
 export const shared = defineConfig({
-  title: 'VitePress',
+  title: 'Foryoufeng',
 
   rewrites: {
     'en/:rest*': ':rest*'
@@ -25,7 +25,7 @@ export const shared = defineConfig({
   },
 
   sitemap: {
-    hostname: 'https://vitepress.dev',
+    hostname: 'https://foryoufeng.github.io',
     transformItems(items) {
       return items.filter((item) => !item.url.includes('migration'))
     }
@@ -33,37 +33,35 @@ export const shared = defineConfig({
 
   /* prettier-ignore */
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/vitepress-logo-mini.svg' }],
-    ['link', { rel: 'icon', type: 'image/png', href: '/vitepress-logo-mini.png' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: 'https://avatars.githubusercontent.com/u/6702914' }],
+    ['link', { rel: 'icon', type: 'image/png', href: 'https://avatars.githubusercontent.com/u/6702914' }],
     ['meta', { name: 'theme-color', content: '#5f67ee' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'en' }],
     ['meta', { property: 'og:title', content: 'VitePress | Vite & Vue Powered Static Site Generator' }],
     ['meta', { property: 'og:site_name', content: 'VitePress' }],
-    ['meta', { property: 'og:image', content: 'https://vitepress.dev/vitepress-og.jpg' }],
-    ['meta', { property: 'og:url', content: 'https://vitepress.dev/' }],
+    ['meta', { property: 'og:image', content: 'https://avatars.githubusercontent.com/u/6702914' }],
+    ['meta', { property: 'og:url', content: 'https://foryoufeng.github.io' }],
     ['script', { src: 'https://cdn.usefathom.com/script.js', 'data-site': 'AZBRSFGG', 'data-spa': 'auto', defer: '' }]
   ],
 
   themeConfig: {
-    logo: { src: '/vitepress-logo-mini.svg', width: 24, height: 24 },
+    logo: { src: 'https://avatars.githubusercontent.com/u/6702914', width: 24, height: 24 },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/foryoufeng/foryoufeng.github.io' }
     ],
 
     search: {
       provider: 'algolia',
       options: {
-        appId: '8J64VVRP8K',
-        apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
-        indexName: 'vitepress',
+        appId: '6K3T5SAGGI',
+        apiKey: '2674927737ff850f160290f0d12f74c9',
+        indexName: 'document',
         locales: {
           ...zhSearch,
         }
       }
-    },
-
-    carbonAds: { code: 'CEBDT27Y', placement: 'vuejsorg' }
+    }
   }
 })

@@ -1,11 +1,11 @@
 ---
 layout: home
 
-title: VitePress
+title: Foryoufeng blog
 titleTemplate: 由 Vite 和 Vue 驱动的静态站点生成器
 
 hero:
-  name: VitePress
+  name: Foryoufeng blog
   text: 由 Vite 和 Vue 驱动的静态站点生成器
   tagline: 将 Markdown 变成优雅的文档，只需几分钟
   actions:
@@ -17,9 +17,9 @@ hero:
       link: /zh/guide/getting-started
     - theme: alt
       text: GitHub
-      link: https://github.com/vuejs/vitepress
+      link: https://github.com/foryoufeng
   image:
-      src: /vitepress-logo-large.webp
+      src: https://avatars.githubusercontent.com/u/6702914?v=4
       alt: VitePress
 
 features:
