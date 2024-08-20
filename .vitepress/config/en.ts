@@ -16,7 +16,8 @@ export const en = defineConfig({
       '/php/': { base: '/php/', items: php() },
       // '/vue/': { base: '/reference/', items: sidebarReference() },
       // '/java/': { base: '/reference/', items: sidebarReference() },
-      '/vscode/': { base: '/vscode/', items: vscode() }
+      '/vscode/': { base: '/vscode/', items: vscode() },
+      '/linux/': { base: '/linux/', items: linux() }
     },
 
     // editLink: {
@@ -40,8 +41,13 @@ function nav(): DefaultTheme.NavItem[] {
     // },
     {
       text: 'php',
-      link: '/guide/what-is-vitepress',
-      activeMatch: '/guide/'
+      link: '/php',
+      activeMatch: '/php/'
+    },
+    {
+      text: 'linux',
+      link: '/linux',
+      activeMatch: '/linux/'
     },
     // {
     //   text: 'vue',
@@ -81,6 +87,18 @@ function vscode(): DefaultTheme.SidebarItem[] {
       // collapsed: false,
       items: [
         { text: 'What is vscode?', link: 'what-is-vitepress' },
+      ]
+    },
+  ]
+}
+
+function linux(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'Document',
+      // collapsed: false,
+      items: [
+        { text: 'network', link: 'network' },
       ]
     },
   ]

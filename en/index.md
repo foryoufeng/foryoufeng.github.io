@@ -15,6 +15,9 @@ hero:
     - theme: alt
       text: Vscode
       link: /vscode/
+    - theme: alt
+      text: Linux
+      link: /linux/
     
   image:
     src: https://avatars.githubusercontent.com/u/6702914?v=4
