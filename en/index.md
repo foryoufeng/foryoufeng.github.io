@@ -18,6 +18,9 @@ hero:
     - theme: alt
       text: Linux
       link: /linux/
+    - theme: alt
+      text: Electron
+      link: /Electron/
     
   image:
     src: https://avatars.githubusercontent.com/u/6702914?v=4
