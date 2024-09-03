@@ -29,3 +29,15 @@ $class = 'Demo';
 call_user_func([$class,'test']);
 
 ```
+
+* call_user_func_array
+  
+```php
+$arr = [
+    ['a' => 1],
+    ['b' => 2],
+    ['c' => 3]
+];
+call_user_func_array('array_merge', array_values($arr));
+//Result: ['a' => 1, 'b' => 2, 'c' => 3]
+```
