@@ -23,13 +23,29 @@
 我们以Route为例，来讲解一下门面Facade的原理与实现。我们先来看Route的门面类：
 
 ```php
-	class Route extends Facade
-	{
-		protected static function getFacadeAccessor()
-	    {
-	        return 'router';
-	    }
-	}
+namespace Illuminate\Support\Facades;
+
+class Route extends Facade
+{
+    protected static function getFacadeAccessor()
+    {
+        return 'router';
+    }
+}
+
+//router 的绑定是在 `RoutingServiceProvider` 中处理的
+namespace Illuminate\Routing;
+
+class RoutingServiceProvider{
+
+protected function registerRouter()
+{
+    $this->app->singleton('router', function ($app) {
+        return new Router($app['events'], $app);
+    });
+}
+
+}
 ```
 
 
@@ -51,26 +67,29 @@
 当运行Route::get()时，发现门面Route没有静态get()函数，PHP就会调用这个魔术函数__callStatic。我们看到这个魔术函数做了两件事：获得对象实例，利用对象调用get()函数。首先先看看如何获得对象实例的：
 
 ```php
-	public static function getFacadeRoot()
-	{
-        return static::resolveFacadeInstance(static::getFacadeAccessor());
-    }
-    protected static function getFacadeAccessor()
-    {
-        throw new RuntimeException('Facade does not implement getFacadeAccessor method.');
-    }
-    protected static function resolveFacadeInstance($name)
-    {
-        if (is_object($name)) {
-            return $name;
-        }
 
-        if (isset(static::$resolvedInstance[$name])) {
-            return static::$resolvedInstance[$name];
-        }
+public static function getFacadeRoot()
+{
+    return static::resolveFacadeInstance(static::getFacadeAccessor());
+}
+    
+protected static function getFacadeAccessor()
+{
+    throw new RuntimeException('Facade does not implement getFacadeAccessor method.');
+}
 
-        return static::$resolvedInstance[$name] = static::$app[$name];
+protected static function resolveFacadeInstance($name)
+{
+    if (is_object($name)) {
+        return $name;
     }
+
+    if (isset(static::$resolvedInstance[$name])) {
+        return static::$resolvedInstance[$name];
+    }
+
+    return static::$resolvedInstance[$name] = static::$app[$name];
+}
 ```
 我们看到基类getFacadeRoot()调用了getFacadeAccessor()，也就是我们的服务重载的函数，如果调用了基类的getFacadeAccessor，就会抛出异常。在我们的例子里getFacadeAccessor()返回了“router”，接下来getFacadeRoot()又调用了resolveFacadeInstance()。在这个函数里重点就是
 
@@ -80,19 +99,6 @@
 我们看到，在这里利用了\$app也就是服务容器创建了“router”，创建成功后放入$resolvedInstance作为缓存，以便以后快速加载。
 好了，Facade的原理到这里就讲完了，但是到这里我们有个疑惑，为什么代码中写Route就可以调用Illuminate\Support\Facades\Route呢？这个就是别名的用途了，很多门面都有自己的别名，这样我们就不必在代码里面写use Illuminate\Support\Facades\Route，而是可以直接用Route了。
 
-# 别名Aliases
-为什么我们可以在laravel中全局用Route，而不需要使用use Illuminate\Support\Facades\Route?其实奥秘在于一个PHP函数：[class_alias](http://www.php.net/manual/zh/function.class-alias.php)，它可以为任何类创建别名。laravel在启动的时候为各个门面类调用了class_alias函数，因此不必直接用类名，直接用别名即可。在config文件夹的app文件里面存放着门面与类名的映射：
-
-```php
-	'aliases' => [
-
-        'App' => Illuminate\Support\Facades\App::class,
-        'Artisan' => Illuminate\Support\Facades\Artisan::class,
-        'Auth' => Illuminate\Support\Facades\Auth::class,
-        ...
-        ]
-
-```
 下面我们来看看laravel是如何为门面类创建别名的。
 
 ## 启动别名Aliases服务
