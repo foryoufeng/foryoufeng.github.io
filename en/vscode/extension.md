@@ -6,3 +6,6 @@
 * PHP IntelliSense
 * IntelliSense for CSS class names in HTML
 * Tailwind CSS IntelliSense
+* Material Icon Theme
+* Markdown Preview Enhanced
+* docker

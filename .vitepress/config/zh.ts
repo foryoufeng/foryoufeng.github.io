@@ -12,8 +12,8 @@ export const zh = defineConfig({
     nav: nav(),
 
     sidebar: {
-      '/zh/guide/': { base: '/zh/guide/', items: sidebarGuide() },
-      '/zh/reference/': { base: '/zh/reference/', items: sidebarReference() }
+      '/zh/php/': { base: '/zh/php/', items: php() },
+      '/zh/laravel/': { base: '/zh/laravel/', items: laravel() }
     },
 
     editLink: {
@@ -23,7 +23,7 @@ export const zh = defineConfig({
 
     footer: {
       message: '基于 MIT 许可发布',
-      copyright: `版权所有 © 2019-${new Date().getFullYear()} foryoufeng`
+      copyright: `版权所有 © 2020-${new Date().getFullYear()} foryoufeng`
     },
 
     docFooter: {
@@ -55,107 +55,43 @@ export const zh = defineConfig({
 function nav(): DefaultTheme.NavItem[] {
   return [
     {
-      text: '指南',
-      link: '/zh/guide/what-is-vitepress',
-      activeMatch: '/zh/guide/'
+      text: 'php',
+      link: '/php',
+      activeMatch: '/php/'
     },
     {
-      text: '参考',
-      link: '/zh/reference/site-config',
-      activeMatch: '/zh/reference/'
+      text: 'linux',
+      link: '/linux',
+      activeMatch: '/linux/'
     },
-    {
-      text: pkg.version,
-      items: [
-        {
-          text: '更新日志',
-          link: 'https://github.com/vuejs/vitepress/blob/main/CHANGELOG.md'
-        },
-        {
-          text: '参与贡献',
-          link: 'https://github.com/vuejs/vitepress/blob/main/.github/contributing.md'
-        }
-      ]
-    }
   ]
 }
 
-function sidebarGuide(): DefaultTheme.SidebarItem[] {
+function php(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: '简介',
-      collapsed: false,
+      text: 'Document',
+      // collapsed: false,
       items: [
-        { text: '什么是 VitePress？', link: 'what-is-vitepress' },
-        { text: '快速开始', link: 'getting-started' },
-        { text: '路由', link: 'routing' },
-        { text: '部署', link: 'deploy' }
+        { text: 'functions', link: 'functions/framework' },
       ]
     },
-    {
-      text: '写作',
-      collapsed: false,
-      items: [
-        { text: 'Markdown 扩展', link: 'markdown' },
-        { text: '资源处理', link: 'asset-handling' },
-        { text: 'frontmatter', link: 'frontmatter' },
-        { text: '在 Markdown 使用 Vue', link: 'using-vue' },
-        { text: '国际化', link: 'i18n' }
-      ]
-    },
-    {
-      text: '自定义',
-      collapsed: false,
-      items: [
-        { text: '自定义主题', link: 'custom-theme' },
-        { text: '扩展默认主题', link: 'extending-default-theme' },
-        { text: '构建时数据加载', link: 'data-loading' },
-        { text: 'SSR 兼容性', link: 'ssr-compat' },
-        { text: '连接 CMS', link: 'cms' }
-      ]
-    },
-    {
-      text: '实验性功能',
-      collapsed: false,
-      items: [
-        { text: 'MPA 模式', link: 'mpa-mode' },
-        { text: 'sitemap 生成', link: 'sitemap-generation' }
-      ]
-    },
-    { text: '配置和 API 参考', base: '/zh/reference/', link: 'site-config' }
   ]
 }
-
-function sidebarReference(): DefaultTheme.SidebarItem[] {
+function laravel(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: '参考',
+      text: 'laravel源码分析',
+      link: './',
+    },
+    {
+      text: 'Composer',
+      collapsed: false,
       items: [
-        { text: '站点配置', link: 'site-config' },
-        { text: 'frontmatter 配置', link: 'frontmatter-config' },
-        { text: '运行时 API', link: 'runtime-api' },
-        { text: 'CLI', link: 'cli' },
-        {
-          text: '默认主题',
-          base: '/zh/reference/default-theme-',
-          items: [
-            { text: '概览', link: 'config' },
-            { text: '导航栏', link: 'nav' },
-            { text: '侧边栏', link: 'sidebar' },
-            { text: '主页', link: 'home-page' },
-            { text: '页脚', link: 'footer' },
-            { text: '布局', link: 'layout' },
-            { text: '徽章', link: 'badge' },
-            { text: '团队页', link: 'team-page' },
-            { text: '上下页链接', link: 'prev-next-links' },
-            { text: '编辑链接', link: 'edit-link' },
-            { text: '最后更新时间戳', link: 'last-updated' },
-            { text: '搜索', link: 'search' },
-            { text: 'Carbon Ads', link: 'carbon-ads' }
-          ]
-        }
+        { text: 'Composer自动加载原理', link: 'composer/load' },
+        { text: 'Composer初始化源码分析', link: 'composer/init' },
       ]
-    }
+    },
   ]
 }
 

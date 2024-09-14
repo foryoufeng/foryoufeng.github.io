@@ -13,5 +13,10 @@ sudo apt remove apache2-bin
 ```
 
 ```
-sudo apt install php php-common php-gd php-json php-zip php-mbstring php-bcmath  php-gmp php-fpm php-curl php-pgsql php-pear php-xml {cgi,intl,zip} -y
+sudo apt install php php-common php-mysql php-gd php-json php-zip php-mbstring php-bcmath  php-gmp php-fpm php-curl php-pgsql php-pear php-xml {cgi,intl,zip} -y
+```
+
+* if need xdebug
+```
+sudo apt-get install php-xdebug
 ```

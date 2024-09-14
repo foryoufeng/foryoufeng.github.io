@@ -7,11 +7,14 @@ titleTemplate: foryoufeng blog
 hero:
   name: foryoufeng
   text: 
-  tagline: Markdown to Beautiful Docs in Minutes
+  tagline: this is for foryoufeng blog
   actions:
     - theme: brand
       text: php
       link: /php/
+    - theme: brand
+      text: laravel
+      link: /zh/laravel/
     - theme: alt
       text: Vscode
       link: /vscode/
@@ -22,9 +25,9 @@ hero:
       text: Electron
       link: /Electron/
     
-  image:
-    src: https://avatars.githubusercontent.com/u/6702914?v=4
-    alt: foryoufeng
+#  image:
+#    src: https://avatars.githubusercontent.com/u/6702914?v=4
+#    alt: foryoufeng
 
 features:
   # - icon: 📝
