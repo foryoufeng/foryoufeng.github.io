@@ -38,12 +38,12 @@ namespace Illuminate\Routing;
 
 class RoutingServiceProvider{
 
-protected function registerRouter()
-{
-    $this->app->singleton('router', function ($app) {
-        return new Router($app['events'], $app);
-    });
-}
+    protected function registerRouter()
+    {
+        $this->app->singleton('router', function ($app) {
+            return new Router($app['events'], $app);
+        });
+    }
 
 }
 ```
