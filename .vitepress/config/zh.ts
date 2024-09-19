@@ -86,10 +86,24 @@ function laravel(): DefaultTheme.SidebarItem[] {
     },
     {
       text: 'Composer',
-      collapsed: false,
       items: [
         { text: 'Composer自动加载原理', link: 'composer/load' },
         { text: 'Composer初始化源码分析', link: 'composer/init' },
+      ]
+    },
+    {
+      text: 'facade',
+      items: [
+        { text: 'facade', link: 'facade/facade' },
+      ]
+    },
+    {
+      text: '容器',
+      items: [
+        { text: '服务容器', link: 'ioc/service_container' },
+        { text: '容器绑定', link: 'ioc/ioc_source_bind' },
+        { text: '容器解析', link: 'ioc/ioc_source_parse' },
+        { text: '容器细节特性', link: 'ioc/ioc_source_detail' },
       ]
     },
   ]

@@ -1,7 +1,7 @@
 # 前言
-在前面几个博客中，我详细讲了 Ioc 容器各个功能的使用、绑定的源码、解析的源码，今天这篇博客会详细介绍 Ioc 容器的一些细节，一些特性，以便更好地掌握容器的功能。
+在前面，我详细讲了 Ioc 容器各个功能的使用、绑定的源码、解析的源码，今天这篇会详细介绍 Ioc 容器的一些细节，一些特性，以便更好地掌握容器的功能。
 
-注：本文使用的测试类与测试对象都取自 laravel 的单元测试文件src/illuminate/tests/Container/ContainerTest.php
+注：本文使用的测试类与测试对象都取自 laravel 的[单元测试](https://github.com/laravel/framework/tree/11.x/tests)文件[tests/Container/ContainerTest.php](https://github.com/laravel/framework/blob/11.x/tests/Container/ContainerTest.php)
 
 # rebind绑定特性
 ## rebind 在绑定之前

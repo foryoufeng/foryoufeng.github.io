@@ -1,5 +1,4 @@
 # make解析
-首先欢迎关注我的博客： [www.leoyang90.cn](http://www.leoyang90.cn)
 
 服务容器对对象的自动解析是服务容器的核心功能，make 函数、build 函数是实例化对象重要的核心，先大致看一下代码：
 
@@ -126,7 +125,7 @@ $app->singleton(
 > 8. 回调
 > 9. 标志解析
 
-下面我们开始详细分解代码逻辑。由于 getAlias 函数已经在 [上一篇](http://leoyang90.cn/2017/05/07/laravel-container-bind/) 讲过，这里不会再说。而loadDeferredProvider 函数作用是加载延迟服务，与容器解析关系不大，我们放在以后再说。
+下面我们开始详细分解代码逻辑。由于 getAlias 函数已经在 [上一篇](./ioc_source_bind) 讲过，这里不会再说。而loadDeferredProvider 函数作用是加载延迟服务，与容器解析关系不大，我们放在以后再说。
 ## 获取注册的实现
 获取解析类的真正实现，函数优先去获取上下文绑定的实现，否则获取 binding 数组中的实现，获取不到就是直接返回自己作为实现：
 ```php
@@ -284,10 +283,20 @@ public function build($concrete)
     // hand back the results of the functions, which allows functions to be
     // used as resolvers for more fine-tuned resolution of these objects.
     if ($concrete instanceof Closure) {
-         return $concrete($this, $this->getLastParameterOverride());
-    }
+            $this->buildStack[] = spl_object_hash($concrete);
 
-    $reflector = new ReflectionClass($concrete);
+            try {
+                return $concrete($this, $this->getLastParameterOverride());
+            } finally {
+                array_pop($this->buildStack);
+            }
+        }
+
+    try {
+        $reflector = new ReflectionClass($concrete);
+    } catch (ReflectionException $e) {
+        throw new BindingResolutionException("Target class [$concrete] does not exist.", 0, $e);
+    }
 
     // If the type is not instantiable, the developer is attempting to resolve
     // an abstract type such as an Interface of Abstract Class and there is
@@ -305,8 +314,12 @@ public function build($concrete)
     // resolving any other types or dependencies out of these containers.
     if (is_null($constructor)) {
         array_pop($this->buildStack);
+        
+        $this->fireAfterResolvingAttributeCallbacks(
+                $reflector->getAttributes(), $instance = new $concrete
+        );
 
-        return new $concrete;
+        return $instance;
     }
 
     $dependencies = $constructor->getParameters();
@@ -314,13 +327,21 @@ public function build($concrete)
     // Once we have all the constructor's parameters we can create each of the
     // dependency instances and then use the reflection instances to make a
     // new instance of this class, injecting the created dependencies in.
-    $instances = $this->resolveDependencies(
-        $dependencies
-    );
+    try {
+            $instances = $this->resolveDependencies($dependencies);
+    } catch (BindingResolutionException $e) {
+        array_pop($this->buildStack);
+
+        throw $e;
+    }
 
     array_pop($this->buildStack);
 
-    return $reflector->newInstanceArgs($instances);
+    $this->fireAfterResolvingAttributeCallbacks(
+            $reflector->getAttributes(), $instance = $reflector->newInstanceArgs($instances)
+    );
+
+    return $instance;
 }
 ```
 我们下面详细的说一下各个部分：
@@ -480,7 +501,7 @@ public function call($callback, array $parameters = [], $defaultMethod = null)
     return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
 }
 ```
-在 [上一篇](http://www.leoyang90.cn/2017/05/06/Laravel-container/) 文章中，我们说过，call 函数中的 callback 参数有以下几种形式：
+在 [上一篇](./service_container) 文章中，我们说过，call 函数中的 callback 参数有以下几种形式：
 - 闭包 Closure
 - class@method
 - 类静态函数，class::method
@@ -571,7 +592,7 @@ public function callMethodBinding($method, $instance)
     return call_user_func($this->methodBindings[$method], $instance, $this);
 }
 ```
-那么这个被绑定的方法 methodBindings 从哪里来呢，就是 [上一篇](http://www.leoyang90.cn/2017/05/06/Laravel-container/) 文章提的 bindMethod：
+那么这个被绑定的方法 methodBindings 从哪里来呢，就是 [上一篇](./service_container) 文章提的 bindMethod：
 ```php
 public function bindMethod($method, $callback)
 {
@@ -629,5 +650,3 @@ call_user_func_array(
             $callback, static::getMethodDependencies($container, $callback, $parameters)
         );
 ```
-
-> Written with [StackEdit](https://stackedit.io/).
