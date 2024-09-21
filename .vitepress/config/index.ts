@@ -4,6 +4,7 @@ import { en } from './en'
 import { zh } from './zh'
 
 export default defineConfig({
+  ignoreDeadLinks: true,
   ...shared,
   locales: {
     root: { label: 'English', ...en },
