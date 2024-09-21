@@ -34,34 +34,21 @@ export const en = defineConfig({
 
 function nav(): DefaultTheme.NavItem[] {
   return [
-    // {
-    //   text: 'laravel',
-    //   link: '/laravel/index',
-    //   activeMatch: '/laravel/'
-    // },
     {
       text: 'php',
       link: '/php',
       activeMatch: '/php/'
     },
     {
+      text: 'laravel',
+      link: '/zh/laravel/index',
+      // activeMatch: '/laravel/'
+    },
+    {
       text: 'linux',
       link: '/linux',
       activeMatch: '/linux/'
     },
-    // {
-    //   text: 'vue',
-    //   link: '/reference/site-config',
-    //   activeMatch: '/reference/'
-    // },{
-    //   text: 'java',
-    //   link: '/guide/what-is-vitepress',
-    //   activeMatch: '/guide/'
-    // },{
-    //   text: 'mysql',
-    //   link: '/guide/what-is-vitepress',
-    //   activeMatch: '/guide/'
-    // }
   ]
 }
 
