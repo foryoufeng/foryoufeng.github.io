@@ -16,11 +16,6 @@ export const zh = defineConfig({
       '/zh/laravel/': { base: '/zh/laravel/', items: laravel() }
     },
 
-    editLink: {
-      pattern: 'https://github.com/vuejs/vitepress/edit/main/docs/:path',
-      text: '在 GitHub 上编辑此页面'
-    },
-
     footer: {
       message: '基于 MIT 许可发布',
       copyright: `版权所有 © 2020-${new Date().getFullYear()} foryoufeng`
@@ -60,6 +55,11 @@ function nav(): DefaultTheme.NavItem[] {
       activeMatch: '/php/'
     },
     {
+      text: 'laravel',
+      link: '/laravel',
+      activeMatch: '/laravel/'
+    },
+    {
       text: 'linux',
       link: '/linux',
       activeMatch: '/linux/'
@@ -70,20 +70,23 @@ function nav(): DefaultTheme.NavItem[] {
 function php(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'Document',
+      text: 'function',
       // collapsed: false,
       items: [
         { text: 'functions', link: 'functions/framework' },
+      ]
+    },
+    {
+      text: '类加载',
+      items: [
+        { text: '类自动加载机制', link: 'autoload/autoload' },
+        { text: 'autoload机制的实现解析', link: 'autoload/autoload-analysis' },
       ]
     },
   ]
 }
 function laravel(): DefaultTheme.SidebarItem[] {
   return [
-    {
-      text: 'laravel源码分析',
-      link: './',
-    },
     {
       text: 'Composer',
       items: [
@@ -94,7 +97,7 @@ function laravel(): DefaultTheme.SidebarItem[] {
     {
       text: 'facade',
       items: [
-        { text: 'facade', link: 'facade/facade' },
+        { text: '门面', link: 'facade/facade' },
       ]
     },
     {
@@ -104,6 +107,93 @@ function laravel(): DefaultTheme.SidebarItem[] {
         { text: '容器绑定', link: 'ioc/ioc_source_bind' },
         { text: '容器解析', link: 'ioc/ioc_source_parse' },
         { text: '容器细节特性', link: 'ioc/ioc_source_detail' },
+      ]
+    },
+    {
+      text: '路由',
+      items: [
+        { text: '路由', link: 'router/route' },
+        { text: '路由分析', link: 'router/route-analysis' },
+        { text: 'Pipeline中间件', link: 'router/route-pipeline' },
+        { text: '路由的正则编译', link: 'router/route-regex' },
+        { text: '路由的匹配与参数绑定', link: 'router/route-match' },
+        { text: '路由中间件源码分析', link: 'router/route-middleware-analysis' },
+        { text: '参数绑定中间件的使用与解析', link: 'router/route-bind-analysis' },
+        { text: '控制器方法的参数构建与运行', link: 'router/route-controller' },
+        { text: 'RESTFul 风格路由', link: 'router/route-restful' },
+        { text: '重定向的使用与源码分析', link: 'router/route-redirect' },
+      ]
+    },
+    {
+      text: '环境变量',
+      items: [
+        { text: '环境变量', link: 'env/env-analysis' },
+      ]
+    },
+    {
+      text: '配置文件',
+      items: [
+        { text: '配置文件的加载与源码解析', link: 'config/config-analysis' },
+      ]
+    },
+    {
+      text: '异常处理',
+      items: [
+        { text: '异常与错误处理', link: 'exception/exception-deal' },
+      ]
+    },
+    {
+      text: '服务提供者',
+      items: [
+        { text: '服务提供者的注册与启动', link: 'provider/provider-analysis' },
+      ]
+    },
+    {
+      text: '数据库',
+      items: [
+        { text: '数据库服务的启动与连接', link: 'database/connect' },
+        { text: '数据库的 CRUD 操作', link: 'database/curd' },
+        { text: '查询构造器与语法编译器(上)', link: 'database/build-one' },
+        { text: '查询构造器与语法编译器(中)', link: 'database/build-two' },
+        { text: '查询构造器与语法编译器(下)', link: 'database/build-three' },
+        { text: '分页原理与源码分析', link: 'database/page' },
+        { text: 'Eloquent Model 源码分析(上)', link: 'database/model-one' },
+        { text: 'Eloquent Model 源码分析(下)', link: 'database/model-two' },
+        { text: 'Eloquent Model 关联源码分析', link: 'database/model-join' },
+        { text: 'Eloquent Model 模型关系', link: 'database/model-query' },
+        { text: 'Eloquent Model 更新关联模型', link: 'database/model-update' },
+      ]
+    },
+    {
+      text: 'Session',
+      items: [
+        { text: 'session 的启动与运行', link: 'session/session-analysis' },
+      ]
+    },
+    {
+      text: '事件系统',
+      items: [
+        { text: '事件系统的启动与运行', link: 'event/event-analysis' },
+      ]
+    },
+    {
+      text: '队列',
+      items: [
+        { text: '消息队列任务与分发源码剖析', link: 'queue/queue-analysis' },
+        { text: '消息队列任务处理器源码剖析', link: 'queue/queue-deal' },
+      ]
+    },
+    {
+      text: '广播系统',
+      items: [
+        { text: '广播系统源码剖析', link: 'broadcast/broadcast-analysis' },
+      ]
+    },
+    {
+      text: 'Passport',
+      items: [
+        { text: 'OAuth2 API 认证系统解析', link: 'passport/passport-one' },
+        { text: 'OAuth2 API 认证系统解析(下)', link: 'passport/passport-two' },
       ]
     },
   ]
