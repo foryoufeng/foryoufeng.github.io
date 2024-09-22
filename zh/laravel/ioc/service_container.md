@@ -36,7 +36,7 @@ Laravel服务容器主要承担两个作用：绑定与解析。
 - 绑定闭包
 
 
-  ```php
+```php
 $this->app->bind('name', function () {
     return 'Taylor';
 });//闭包返回变量
@@ -67,8 +67,7 @@ $this->app->bind('HelpSpot\API', function ($app) {
 
 - 绑定接口
 
-
-  ```php
+```php
 public function testCanBuildWithoutParameterStackWithConstructors()
 {
     $container = new Container;
@@ -76,7 +75,7 @@ public function testCanBuildWithoutParameterStackWithConstructors()
                      'Illuminate\Tests\Container\ContainerImplementationStub');
     
     $this->assertInstanceOf(ContainerDependentStub::class, 
-                            $container->build(ContainerDependentStub::class));
+    $container->build(ContainerDependentStub::class));
 }
 
 interface IContainerContractStub
@@ -448,7 +447,7 @@ $abstractAliases = [
 ### make 解析
 有很多方式可以从容器中解析对象，首先，你可以使用 make 方法，该方法接收你想要解析的类名或接口名作为参数：
 
-  ```php
+```php
 public function testAutoConcreteResolution()
 {
     $container = new Container;

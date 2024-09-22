@@ -8,7 +8,7 @@ export const shared = defineConfig({
     'en/:rest*': ':rest*'
   },
 
-  lastUpdated: true,
+  // lastUpdated: true,
   cleanUrls: true,
   metaChunk: true,
 

@@ -196,8 +196,6 @@ public function wrapTable($table)
 
 `wrap` 整体流程图如下：
 
-![Markdown](http://owql68l6p.bkt.clouddn.com/17-9-23/27965477.jpg)
-
 ## from 语句
 
 我们看到 `DB::table` 实际上是调用了查询构造器的 `from` 函数。接下来我们就看看，当我们写下了
@@ -249,10 +247,6 @@ public function toSql()
 }
 ```
 ### compileFrom 函数
-
-首先我们先看看流程图：
-
-![Markdown](http://owql68l6p.bkt.clouddn.com/17-9-23/10116808.jpg)
 
 语法编译器 `grammer` 对于 `from` 语句的处理由函数 `compileFrom` 负责：
 

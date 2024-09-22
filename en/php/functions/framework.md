@@ -41,3 +41,19 @@ $arr = [
 call_user_func_array('array_merge', array_values($arr));
 //Result: ['a' => 1, 'b' => 2, 'c' => 3]
 ```
+
+* match
+```php
+<?php
+public function createConnector(array $config)
+{
+        return match ($config['driver']) {
+            'mysql' => new MySqlConnector,
+            'mariadb' => new MariaDbConnector,
+            'pgsql' => new PostgresConnector,
+            'sqlite' => new SQLiteConnector,
+            'sqlsrv' => new SqlServerConnector,
+            default => throw new InvalidArgumentException("Unsupported driver [{$config['driver']}]."),
+        };
+}
+```

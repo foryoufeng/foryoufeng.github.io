@@ -4,7 +4,7 @@
 
 实际上，我们可以简单地把分页服务看作一个前端资源，`render` 函数或者 `link` 函数的结果就是分页前端代码。
 
-如果你还对 `laravel` 的分页不是很熟悉，请先阅读官方文档 ： [分页](https://d.laravel-china.org/docs/5.5/pagination)。
+如果你还对 `laravel` 的分页不是很熟悉，请先阅读官方文档 ： [分页](https://laravel.com/docs/master/pagination)。
 
 ## 分页服务的启动
 
@@ -331,26 +331,6 @@ public function nextPageUrl()
 }
 ```
 `上一页` 与 `下一页` 按钮的功能比较简单，至于中间的分页特效比较复杂，我们由下一节来说。
-
-## 分页 elements
-
-我们先说一下不同的分页样式：
-
-- 当我们设置两侧页数为 3 时，当前数据总页数小于 8 页时分页效果：
-
-![](http://owql68l6p.bkt.clouddn.com/QQ20171001-104935@2x.png)
-
-- 总页数大于 6 页，且当前页在前 8 页（2 * 3 + 2）时分页效果：
-
-![img](http://owql68l6p.bkt.clouddn.com/QQ20171001-102833@2x.png)
-
-- 当前页在前 6 页与后 6 页之间分页效果：
-
-![img](http://owql68l6p.bkt.clouddn.com/QQ20171001-102858@2x.png)
-
-- 当前页在最后 6 页时分页效果：
-
-![img](http://owql68l6p.bkt.clouddn.com/QQ20171001-102916@2x.png)
 
 分页效果样式的关键来源于 `UrlWindow`，这个类用于根据总页数与当前页的不同来控制不同的分页样式。
 

@@ -17,7 +17,6 @@ export const zh = defineConfig({
     },
 
     footer: {
-      message: '基于 MIT 许可发布',
       copyright: `版权所有 © 2020-${new Date().getFullYear()} foryoufeng`
     },
 
@@ -27,16 +26,16 @@ export const zh = defineConfig({
     },
 
     outline: {
-      label: '页面导航'
+      label: '导航'
     },
 
-    lastUpdated: {
-      text: '最后更新于',
-      formatOptions: {
-        dateStyle: 'short',
-        timeStyle: 'medium'
-      }
-    },
+    // lastUpdated: {
+    //   text: '最后更新于',
+    //   formatOptions: {
+    //     dateStyle: 'short',
+    //     timeStyle: 'medium'
+    //   }
+    // },
 
     langMenuLabel: '多语言',
     returnToTopLabel: '回到顶部',
