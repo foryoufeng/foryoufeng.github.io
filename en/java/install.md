@@ -4,7 +4,11 @@ jdk1.8
 
 ```sh
 sudo apt install openjdk-8-jre
+#install 21
+sudo apt install openjdk-21-jre
 java -version
+# see installed JRE and select the version
+sudo update-alternatives --config java
 ```
 
 install maven
