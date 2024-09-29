@@ -5,10 +5,17 @@ install in mac
 ```
 arch -x86_64 sudo pecl install xdebug
 ```
+install in ubuntu
+
+```sh
+sudo apt-get install php-xdebug
+```
 
 config php
 
 ```
+//find ini location
+php -i|grep ini 
 cd /usr/local/etc/php/8.2/conf.d
 vi xdebug.ini
 ```
