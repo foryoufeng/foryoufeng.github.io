@@ -12,7 +12,7 @@ export const en = defineConfig({
     nav: nav(),
 
     sidebar: {
-      // '/laravel/': { base: '/laravel/', items: laravelGuide() },
+      '/laravel_basic/': { base: '/laravel_basic/', items: laravelBasic() },
       '/php/': { base: '/php/', items: php() },
       // '/vue/': { base: '/reference/', items: sidebarReference() },
       // '/java/': { base: '/reference/', items: sidebarReference() },
@@ -51,16 +51,13 @@ function nav(): DefaultTheme.NavItem[] {
   ]
 }
 
-function laravelGuide(): DefaultTheme.SidebarItem[] {
+function laravelBasic(): DefaultTheme.SidebarItem[] {
   return [
     {
-      text: 'Introduction',
+      text: 'install',
       collapsed: false,
       items: [
-        { text: 'What is VitePress?', link: 'what-is-vitepress' },
-        { text: 'Getting Started', link: 'getting-started' },
-        { text: 'Routing', link: 'routing' },
-        { text: 'Deploy', link: 'deploy' }
+        { text: 'install', link: 'install/install' },
       ]
     }
   ]
