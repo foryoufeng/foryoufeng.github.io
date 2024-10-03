@@ -25,7 +25,7 @@ export const shared = defineConfig({
   },
 
   sitemap: {
-    hostname: 'https://foryoufeng.github.io',
+    hostname: 'https://foryoufeng.pp-lang.tech',
     transformItems(items) {
       return items.filter((item) => !item.url.includes('migration'))
     }
@@ -41,7 +41,7 @@ export const shared = defineConfig({
     ['meta', { property: 'og:title', content: 'VitePress | Vite & Vue Powered Static Site Generator' }],
     ['meta', { property: 'og:site_name', content: 'VitePress' }],
     ['meta', { property: 'og:image', content: 'https://avatars.githubusercontent.com/u/6702914' }],
-    ['meta', { property: 'og:url', content: 'https://foryoufeng.github.io' }],
+    ['meta', { property: 'og:url', content: 'https://foryoufeng.pp-lang.tech' }],
     ['script', { src: 'https://cdn.usefathom.com/script.js', 'data-site': 'AZBRSFGG', 'data-spa': 'auto', defer: '' }]
   ],
 

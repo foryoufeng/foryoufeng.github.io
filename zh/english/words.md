@@ -38,3 +38,8 @@
 * replicate 复现;复制
 * automate 使自动化
 * maintain 保持，维持；维修，保养
+* grasp 抓牢，握紧；理解
+* formula 计划，方案；配方，处方
+* illustrate 说明，阐明；证明，证实
+* syntactic 句法的；语法的
+* boilerplate 引用
