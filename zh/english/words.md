@@ -43,3 +43,4 @@
 * illustrate 说明，阐明；证明，证实
 * syntactic 句法的；语法的
 * boilerplate 引用
+* perform 执行；运行 

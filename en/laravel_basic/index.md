@@ -1,9 +1,14 @@
-# laravel源码分析
+# laravel basic use
 
-* PHP版本 v8.3.6
-* composer版本 v2.7.8
-* laravel版本 v11.9.2
+* PHP Version v8.3.6
+* composer Version v2.7.8
+* laravel Version v11.9.2
 
 ## menu
 ### laravel install
-* [install](./install/install)
+* [Install](basic/install)
+* [Route](basic/route)
+* [Middleware](basic/middleware)
+* [Csrf](basic/middleware)
+* [Controller](basic/controller)
+* [Request](basic/request)
