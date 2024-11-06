@@ -1,7 +1,8 @@
 # desktop
 
 # create desktop file such as snipaste.desktop
-```
+
+```sh
 [Desktop Entry]
 Type=Application
 Name=phpstorm
@@ -20,6 +21,12 @@ cd ~/.local/share/applications
 
 ```sh
 xprop WM_CLASS
+```
+
+get the app name and add it to dektop
+
+```sh
+StartupWMClass=jetbrains-phpstorm
 ```
 
 > refence articel [https://fosscope.com/20240621-fixing-applications-icon-missing-from-the-launcher-in-ubuntu/](https://fosscope.com/20240621-fixing-applications-icon-missing-from-the-launcher-in-ubuntu/)

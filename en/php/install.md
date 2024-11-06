@@ -20,3 +20,22 @@ sudo apt install php php-common php-mysql php-gd php-json php-zip php-mbstring p
 ```
 sudo apt-get install php-xdebug
 ```
+
+install dev
+
+```
+sudo apt-get install php8.3-dev
+```
+
+install ssh2
+
+```
+sudo pecl channel-update pecl.php.net
+pecl install ssh2
+```
+
+restart
+
+```
+sudo systemctl restart php8.3-fpm.service
+```
