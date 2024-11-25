@@ -1,6 +1,6 @@
 # desktop
 
-# create desktop file such as snipaste.desktop
+# create desktop file such as phpstorm.desktop
 
 ```sh
 [Desktop Entry]

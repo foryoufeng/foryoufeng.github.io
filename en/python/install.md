@@ -16,3 +16,9 @@ trusted-host = https://pypi.tuna.tsinghua.edu.cn
 pip3 config list
 
 ```
+
+deepin
+
+```sh
+pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
+```

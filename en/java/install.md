@@ -19,7 +19,10 @@ mvn -version
 ```
 
 config maven
-
+```
+cd ~/.m2/
+vi settings.xml
+```
 
 install tomcat
 

@@ -9,7 +9,7 @@ sudo mv composer.phar /usr/local/bin/composer
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
 
-### add to `PATH`
+### add composer bin to `PATH`
 
 ```
 # where is composer

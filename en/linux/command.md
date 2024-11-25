@@ -23,3 +23,8 @@ systemctl
 ```sh
 systemctl list-units --type=service --state=active |grep php
 ```
+
+change linux shell login message
+```sh
+sudo vi /etc/motd
+```

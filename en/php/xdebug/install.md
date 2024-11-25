@@ -48,4 +48,36 @@ config xdebug
 * 1.install xdebug extensiton in chrome https://chromewebstore.google.com/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc
 
 * 2.open xdebug and config IDE key = PhpStorm
+
+
+## source code install xdebug
+
+```sh
+sudo apt install -y autoconf
+export PHP_AUTOCONF=$(which autoconf)
+echo "export PHP_AUTOCONF=$(which autoconf)" >> ~/.bashrc
+source ~/.bashrc
+wget https://xdebug.org/files/xdebug-3.1.5.tgz
+tar -xvzf xdebug-3.1.5.tgz
+cd xdebug-3.1.5
+```
+
+compile xdebug
+
+```sh
+phpize
+./configure
+make -j$(nproc)
+sudo make install
+```
+
+add config to php.ini
+```sh
+[xdebug]
+zend_extension=xdebug.so
+xdebug.mode=debug                 
+xdebug.start_with_request=yes      
+xdebug.client_host=127.0.0.1
+xdebug.client_port=9003
+```
   
