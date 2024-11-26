@@ -30,5 +30,5 @@ Categories=Development;Database;
 ```
 
 ```sh
-
+/home/wuqiang/Applications/squashfs-root/usr/bin/Snipaste snip
 ```
