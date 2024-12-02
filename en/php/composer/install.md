@@ -9,6 +9,15 @@ sudo mv composer.phar /usr/local/bin/composer
 composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/
 ```
 
+## fetch by aliyun or tencent
+
+```sh
+wget https://mirrors.tencent.com/composer/composer.phar
+wget https://mirrors.aliyun.com/composer/composer.phar
+mv composer.phar  /usr/local/bin/composer
+```
+
+
 ### add composer bin to `PATH`
 
 ```

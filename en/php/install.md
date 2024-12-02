@@ -44,7 +44,7 @@ sudo systemctl restart php8.3-fpm.service
 
 install dependent
 ```sh
-sudo apt install -y ccache libjpeg-dev libxml2-dev libssl-dev  libpng-dev libfreetype6-dev libonig-dev libzip-dev libsqlite3-dev libcurl4-openssl-dev
+sudo apt install -y ccache libjpeg-dev libxml2-dev libssl-dev  libpng-dev libfreetype6-dev libonig-dev libzip-dev libsqlite3-dev libcurl4-openssl-dev build-essential libtool autoconf libsodium-dev
 ```
 
 compile php
@@ -54,7 +54,7 @@ wget https://www.php.net/distributions/php-8.3.14.tar.gz
 tar -xvjf php-8.3.14.tar.gz
 cd php-8.3.14
 //one command to compile
-./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php  --enable-opcache --enable-bcmath    --enable-fpm     --enable-gd     --with-jpeg     --with-freetype     --enable-mbstring     --with-curl     --with-openssl     --enable-soap     --enable-sockets     --enable-ctype     --enable-sockets     --with-mysqli     --enable-mbregex     --with-pdo-mysql     --with-zlib   --with-zip   --enable-xml     --with-openssl
+./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php  --enable-opcache --enable-bcmath    --enable-fpm     --enable-gd     --with-jpeg     --with-freetype     --enable-mbstring     --with-curl     --with-openssl     --enable-soap     --enable-sockets     --enable-ctype     --enable-sockets     --with-mysqli     --enable-mbregex     --with-pdo-mysql     --with-zlib   --with-zip   --enable-xml  --with-sodium   --with-openssl
 //multiple line compile
 ./configure \
     --prefix=/usr/local/php \
@@ -75,6 +75,7 @@ cd php-8.3.14
     --enable-mbregex \
     --with-pdo-mysql \
     --with-zlib \
+    --with-sodium \
     --with-zip \
     --enable-xml \
     --with-openssl

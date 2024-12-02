@@ -76,7 +76,7 @@ add config to php.ini
 [xdebug]
 zend_extension=xdebug.so
 xdebug.mode=debug                 
-xdebug.start_with_request=yes      
+xdebug.start_with_request=no      
 xdebug.client_host=127.0.0.1
 xdebug.client_port=9003
 ```
