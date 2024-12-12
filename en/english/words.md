@@ -4486,7 +4486,6 @@
 * promising	有希望的，有前途的;许诺，答应（promise的现在分词形式）
 * promote	促进，发扬；提升
 * promotion	促进；提升
-* prompt	及时的;敦促
 * promptly	敏捷地，迅速地
 * prone	俯卧的；有…倾向的，易于…的;(Prone)人名；(意、法)普罗内
 * pronoun	代词
@@ -4923,7 +4922,6 @@
 * rot	腐烂；腐败；腐坏;腐烂；腐败；堕落;（表示厌恶、蔑视、烦恼等）胡说；糟了
 * rotary	旋转的，转动的
 * rotate	旋转
-* rotation	旋转，转动
 * rotten	腐烂的，发臭的
 * rough	表面不平的；粗略的
 * round	圆；循环；一回合；圆形物;圆的；完全的；大概的；肥胖的;在周围；迂回地；朝反方向；挨个;完成；围捕；绕行；弄圆;附近；绕过；大约；在…周围
@@ -5494,7 +5492,7 @@
 * string	线，细绳；一串
 * strip	剥去；除去;条，带
 * stripe	条纹，条子
-* strive	努力，奋斗，力求
+* strive	努力，奋斗，力求;力争；斗争，反抗
 * stroke	中风；打，击；鸣声
 * stroll	散步，溜达，闲逛
 * strong	坚强的；强壮的；牢固的；擅长的;强劲地；猛烈地;(Strong)人名；(英)斯特朗
@@ -6276,48 +6274,14 @@
 * zone	地区，区域，范围
 * zoo	动物园
 * zoom	急速上升；嗡嗡声；[摄] 变焦摄影;急速上升；摄像机移动
-* 
-* * prologue 序言
-* * scheme  计划，方案
-* * semantic 语义的；语义学的
-* * minor 较小的，次要的，轻微的；
-* * patch 补丁
-* * constraint 限制，束缚；克制，拘束
-* * strive 努力，力争；斗争，反抗
-* * cautiously 慎重地，谨慎地
-* * graceful 优美的，优雅的；得体的，有风度的
-* * encryption 加密；加密术
-* * rotation 旋转，转动;轮流，交替；
-* * prompt 促使，导致；鼓励，提示
-* * integration 结合，融合；取消种族隔离
-* * robust 强健的，强壮的
-* * capabilities 能力；功能；性能；
-* * leaner 更精干的，效率更高的；
-* * revitalized 使恢复生机，使复兴
-* * eliminate 剔除，根除
-* * bulk 主体，大部分；
-* * overall 总的，全面的
-* * desire 愿望，欲望，渴望
-* * sensible 理智的，合理的；
-* * unified 一致的，统一的
-* * scalable 可扩展的；可改变大小的，可缩放的
-* * seamless 无缝的；无缝合线的；无伤痕的
-* * granularity 间隔尺寸， 粒度
-* * interaction 互动，交流；相互影响，相互作用
-* * cumbersome 笨重的；繁琐的，复杂的
-* * inspection 视察；检查，审视
-* * hesitate 犹豫，不愿意
-* * recipient 接受的，容纳的
-* * relevant 有关的，切题的；正确的，适宜的
-* * file 提出（申请）；发送
-* * sample 样本，样品；试用产品，试样
-* * demonstrate 证明；示范，演示
-* * replicate 复现;复制
-* * automate 使自动化
-* * maintain 保持，维持；维修，保养
-* * grasp 抓牢，握紧；理解
-* * formula 计划，方案；配方，处方
-* * illustrate 说明，阐明；证明，证实
-* * syntactic 句法的；语法的
-* * boilerplate 引用
-* * perform 执行；运行 
+* prologue 序言
+* semantic 语义的；语义学的
+* strive 努力，力争；斗争，反抗
+* cautiously 慎重地，谨慎地
+* encryption 加密；加密术
+* rotation 旋转，转动;轮流，交替；
+* prompt 促使，导致；鼓励，提示
+* integration 结合，融合；取消种族隔离
+* capabilities 能力；功能；性能；
+* leaner 更精干的，效率更高的；
+* revitalized 使恢复生机，使复兴
