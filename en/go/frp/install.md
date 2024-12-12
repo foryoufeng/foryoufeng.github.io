@@ -65,6 +65,19 @@ server {
 }
 ```
 
+```sh
+server {
+    listen 80;
+    server_name wuqiang.ptdplat.com;
+    root /home/Documenst/docs/html/;
+    index index.html index.htm;
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+```
+
+
 config frpc.toml
 
 ```sh
@@ -86,4 +99,36 @@ start client
 
 ```sh
 ./frpc -c frpc.toml
+```
+
+add client service
+
+```sh
+sudo vim /etc/systemd/system/frpc.service
+```
+
+add content
+```sh
+[Unit]
+Description = frp client
+After = network.target syslog.target
+Wants = network.target
+
+[Service]
+Type = simple
+ExecStart = /home/wuqiang/Applications/frp_0.61.0_linux_amd64/frpc -c /home/wuqiang/Applications/frp_0.61.0_linux_amd64/frpc.toml
+
+[Install]
+WantedBy = multi-user.target
+
+```
+
+use systemd manage frpc
+
+```sh
+sudo systemctl start frpc
+sudo systemctl stop frpc
+sudo systemctl restart frpc
+sudo systemctl status frpc
+sudo systemctl enable frpc
 ```

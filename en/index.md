@@ -14,7 +14,7 @@ hero:
       link: /php/
     - theme: brand
       text: laravel
-      link: /zh/laravel/
+      link: /laravel/
     - theme: alt
       text: laravel basic
       link: /laravel_basic/

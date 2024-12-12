@@ -33,3 +33,39 @@ sudo vi /etc/clickhouse-server/config.xml
 # restart
 sudo systemctl restart clickhouse-server
 ```
+
+## use client to operate
+
+```sh
+clickhouse-client --host=127.0.0.1 --user=default
+CREATE USER new_user IDENTIFIED BY 'secure_password';
+GRANT ALL ON example_db.* TO new_user;
+```
+
+## config connect
+
+```sh
+vi /etc/clickhouse-server/config.xml
+//add listen_host
+<listen_host>0.0.0.0</listen_host>
+
+vi /etc/clickhouse-server/users.xml
+//add ip connect
+<users>
+    <default>
+        <profile>default</profile>
+        <quota>default</quota>
+        <networks>
+            <ip>::/0</ip> <!-- Allow all IPs (IPv6) -->
+            <ip>0.0.0.0/0</ip> <!-- Allow all IPs (IPv4) -->
+        </networks>
+        <password></password> <!-- Optionally set a password for the default user -->
+    </default>
+</users>
+```
+
+## create database
+
+```sh
+CREATE DATABASE your_database_name;
+```

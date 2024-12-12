@@ -11,3 +11,9 @@ du -h /var/log
 ```sh
 ls -lh
 ```
+
+* see disk
+
+```sh
+df -h
+```

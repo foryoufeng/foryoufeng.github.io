@@ -40,4 +40,7 @@ node -v
 # npm config
 ```
 npm config set registry https://registry.npmmirror.com
+// 设置npm默认源
+npm config set registry https://registry.npmjs.org/
 ```
+
