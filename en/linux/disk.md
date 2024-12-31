@@ -17,3 +17,15 @@ ls -lh
 ```sh
 df -h
 ```
+
+* get top 10
+
+```sh
+sudo du -ah /var/log | sort -rh | head -n 10
+```
+
+see part of disk
+
+```sh
+lsblk
+```

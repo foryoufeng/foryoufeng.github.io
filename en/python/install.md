@@ -22,3 +22,17 @@ deepin
 ```sh
 pip config set global.index-url https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple
 ```
+
+install poetry
+```sh
+pip install poetry
+poetry source add --priority=default mirrors https://pypi.tuna.tsinghua.edu.cn/simple/
+poetry install
+```
+
+install different python version
+
+```sh
+
+
+```

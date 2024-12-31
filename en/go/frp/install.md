@@ -132,3 +132,14 @@ sudo systemctl restart frpc
 sudo systemctl status frpc
 sudo systemctl enable frpc
 ```
+
+mysql
+
+```sh
+[[proxies]]
+name = "ssh"
+type = "tcp"
+localIP = "127.0.0.1"
+localPort = 3306
+remotePort = 7507
+```

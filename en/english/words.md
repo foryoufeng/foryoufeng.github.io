@@ -1336,6 +1336,8 @@
 * crow	鸦，乌鸦;啼
 * crowd	人群；一伙人；大众
 * crown	王冠，冕；花冠
+* copyleft 版权
+* clause 条款
 * crucial	重要的；决定性的；定局的；决断的
 * crude	简陋的；天然的
 * cruel	残忍的，残酷的

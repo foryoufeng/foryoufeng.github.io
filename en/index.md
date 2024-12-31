@@ -17,7 +17,7 @@ hero:
       link: /laravel/
     - theme: alt
       text: laravel basic
-      link: /laravel_basic/
+      link: /laravel_basic/E
     - theme: alt
       text: Vscode
       link: /vscode/

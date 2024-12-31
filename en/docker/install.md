@@ -11,3 +11,10 @@ sudo systemctl restart docker
 ```
 sudo apt install docker-compose-plugin
 ```
+
+* add user to docker group
+
+```sh
+sudo usermod -aG docker ubuntu
+newgrp docker
+```
