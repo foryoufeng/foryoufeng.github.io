@@ -17,6 +17,7 @@ Host
 Host ub
     HostName remote-server-ip
     User username
+    Port 22
     IdentityFile ~/.ssh/ub
 chmod 700 ~/.ssh
 chmod 600 ~/.ssh/ub
