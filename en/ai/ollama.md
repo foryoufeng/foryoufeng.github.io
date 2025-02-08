@@ -101,6 +101,66 @@ chat ui
 
 [MaxKB](https://github.com/1Panel-dev/MaxKB)
 
+## python use
+
+install package
+
+```shell
+pip install ollama
+```
+
+run by python 
+
+```python
+from ollama import Client
+
+client = Client(
+    host='http://127.0.0.1:11434',
+)
+def chat_with_model():
+    print("欢迎使用 AI 助手！输入 'exit' 退出对话。\n")
+
+    # 设置用户角色
+    messages = [
+        {'role': 'system', 'content': '你是一个linux下python专家'}
+    ]
+
+    while True:
+        try:
+            # 获取用户输入
+            user_input = input("你: ")
+            if user_input.lower() == 'exit':
+                print("对话已结束。")
+                break
+
+            # 添加用户消息到对话历史
+            messages.append({'role': 'user', 'content': user_input})
+
+            # 调用模型，开启流式输出
+            stream = client.chat(model='deepseek-r1:32b', messages=messages, stream=True)
+            print("助手: ", end="", flush=True)
+
+            # 收集助手的响应
+            assistant_response = ""
+            for chunk in stream:
+                if 'message' in chunk and 'content' in chunk['message']:
+                    content = chunk['message']['content']
+                    assistant_response += content
+                    print(content, end="", flush=True)
+
+            print()  # 换行
+
+            # 将助手响应添加到对话历史
+            messages.append({'role': 'assistant', 'content': assistant_response})
+
+        except Exception as e:
+            print(f"发生错误: {e}")
+
+
+if __name__ == "__main__":
+    chat_with_model()
+```
+
 
 ai助手
 
