@@ -1,4 +1,6 @@
-# ollma
+# ollama
+
+地址：[https://ollama.com/](https://ollama.com/)
 
 install
 
@@ -9,7 +11,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 get model
 
 ```sh
-ollama run llama3.3
+ollama run deepseek-r1:14b
 ```
 
 install nvidia docker 
@@ -31,7 +33,7 @@ nvidia-smi
 install open-webui
 
 ```sh
-docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always dyrnq/open-webui:main
+docker run -d -p 3000:8080  -v open-webui:/app/backend/data --name open-webui dyrnq/open-webui
 ```
 
 use docker-compose
@@ -83,18 +85,7 @@ Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/
 [Install]
 WantedBy=default.target
 ```
-default save path
-```sh
-cd /usr/share/ollama/.ollama/
-vi config.json
-```
 
-add config
-```sh
-{
-    "api_key": "123456"
-}
-```
 
 reload service
 
@@ -103,29 +94,15 @@ sudo systemctl daemon-reload
 sudo systemctl restart ollama.service
 ps aux | grep ollama
 ```
+ 
+chat ui
 
-nginx cofig
+[open-webui](https://github.com/open-webui/open-webui)
 
-```sh
-server {
-    listen 8088;
-    server_name yourdomain.com;  # 替换为你的域名或IP地址
+[MaxKB](https://github.com/1Panel-dev/MaxKB)
 
-    # 设置一个密钥认证
-    location / {
-        # 检查请求头中的 Authorization 是否包含正确的 Bearer Token
-        if ($http_authorization != "Bearer sdf455ERdhHy") {
-            return 401 "Unauthorized";  # 如果密钥不匹配，返回 401 错误
-        }
 
-        # 配置反向代理
-        proxy_pass http://127.0.0.1:11434;  # 将请求转发到 Ollama 服务
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
+ai助手
 
-        proxy_read_timeout 90;
-    }
-}
-```
+[https://github.com/ibiteam/assistant](https://github.com/ibiteam/assistant)
+

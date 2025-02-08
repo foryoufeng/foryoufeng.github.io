@@ -12,6 +12,7 @@ export const en = defineConfig({
     nav: nav(),
 
     sidebar: {
+      '/ai/': { base: '/ai/', items: ai() },
       '/laravel_basic/': { base: '/laravel_basic/', items: laravelBasic() },
       '/php/': { base: '/php/', items: php() },
       '/laravel/': { base: '/laravel/', items: laravel() },
@@ -34,6 +35,11 @@ export const en = defineConfig({
 
 function nav(): DefaultTheme.NavItem[] {
   return [
+    {
+      text: 'ai',
+      link: '/ai',
+      activeMatch: '/ai/'
+    },
     {
       text: 'php',
       link: '/php',
@@ -88,6 +94,19 @@ function linux(): DefaultTheme.SidebarItem[] {
       // collapsed: false,
       items: [
         { text: 'network', link: 'network' },
+      ]
+    },
+  ]
+}
+
+function ai(): DefaultTheme.SidebarItem[] {
+  return [
+    {
+      text: 'ai文档',
+      // collapsed: false,
+      items: [
+        { text: 'ai', link: 'index' },
+        { text: 'ollama', link: 'ollama' },
       ]
     },
   ]

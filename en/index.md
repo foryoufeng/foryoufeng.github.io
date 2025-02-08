@@ -7,8 +7,11 @@ titleTemplate: foryoufeng blog
 hero:
   name: foryoufeng
   text: 
-  tagline: this is for foryoufeng blog
+  tagline: this is for wuqiang's blog
   actions:
+    - theme: brand
+      text: ai
+      link: /ai/ollama
     - theme: brand
       text: php
       link: /php/
