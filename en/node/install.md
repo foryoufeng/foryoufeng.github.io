@@ -50,3 +50,13 @@ install
 npm install --verbos
 ```
 
+set electron mirror
+```sh
+npm config set electron_mirror=https://registry.npmmirror.com/-/binary/electron/
+```
+
+set electron_builder_binaries_mirror in `~/.bashrc`
+```sh
+export ELECTRON_BUILDER_BINARIES_MIRROR=https://npmmirror.com/mirrors/electron-builder-binaries/
+```
+

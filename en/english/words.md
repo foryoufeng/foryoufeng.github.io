@@ -4211,6 +4211,7 @@
 * phenomenon	现象
 * philosopher	哲学家
 * philosophy	哲学；哲理；人生观
+* phish 网络钓鱼
 * phone	电话，电话机
 * photo	照片，相片
 * photoelectric	光电的
@@ -4991,6 +4992,8 @@
 * saw	锯子;锯，锯开
 * say	比如说[用于举例]
 * scale	天平，磅秤，秤
+* scam  骗局
+* scammers 骗子
 * scan	细看；浏览；扫描
 * scandal	丑事，丑闻；耻辱
 * scar	瘢痕

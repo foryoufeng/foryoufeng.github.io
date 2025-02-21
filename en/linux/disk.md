@@ -29,3 +29,9 @@ see part of disk
 ```sh
 lsblk
 ```
+
+see disk info
+
+```sh
+vi /etc/fstab
+```

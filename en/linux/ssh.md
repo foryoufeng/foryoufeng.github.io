@@ -3,7 +3,7 @@
 scp 
 
 ```sh
-scp a www@192.168.54.100:/home/www/
+scp -r a www@192.168.54.100:/home/www/
 ```
 
 config
@@ -35,4 +35,11 @@ close password login
 sudo vi /etc/ssh/sshd_config
 //change password login no
 PasswordAuthentication no
+```
+
+config .ssh
+```sh
+chmod 700 ~/.ssh
+
+chmod 600 ~/.ssh/authorized_keys
 ```

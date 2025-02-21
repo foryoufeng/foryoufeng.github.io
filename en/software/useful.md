@@ -1,0 +1,4 @@
+# useful software
+
+* snipaste
+* 
