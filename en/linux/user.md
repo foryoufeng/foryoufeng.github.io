@@ -1,5 +1,21 @@
 # user
 
+see linux user
+```sh
+cat /etc/passwd
+```
+
+see password save file
+
+```sh
+cat /etc/shadow
+```
+
+see user group 
+```sh
+cat /etc/group
+```
+
 give user no password to run sudo
 
 ```sh

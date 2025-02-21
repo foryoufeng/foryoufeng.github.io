@@ -1,5 +1,23 @@
 # shell 
 
+set alias ,login shell will use file .bash_profile and load .bashrc with login
+
+```sh
+vi ~/.bash_profile
+```
+
+edit the file
+
+```sh
+alias ls='ls --color=auto'
+alias vb='vi ~/.bash_profile'
+alias sb='source ~/.bash_profile'
+
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+```
+
 get git project shell
 
 ```sh

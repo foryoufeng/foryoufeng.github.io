@@ -38,3 +38,50 @@ see linux kernel
 uname -a
 cat /proc/version
 ```
+
+pwd : print working directory
+```sh
+pwd
+```
+
+mkdir: create dir
+```sh
+mkdir -p a/b/c/d
+```
+
+rmdir: remove dir
+```sh
+rmdir -p a/b/c
+```
+
+$PATH: linux system is use : to split
+```sh
+echo $PATH
+```
+
+more : see file 
+```sh
+more /etc/nginx/nginx.conf
+```
+
+less : see file and can up and down page
+
+```sh
+less /etc/man_db.conf
+```
+
+head: see file first lines
+```sh
+head -n 20 /etc/man_db.conf
+```
+
+tail : see file end lines
+```sh
+tail -n 20 /etc/man_db.conf
+```
+
+which: see command location
+
+```sh
+which ls
+```
