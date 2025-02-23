@@ -34,3 +34,8 @@ install nginx
 ```sh
 sudo certbot --nginx
 ```
+
+add crontab 
+```sh
+0 0,12 * * * certbot renew --quiet
+```
