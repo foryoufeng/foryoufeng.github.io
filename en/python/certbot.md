@@ -3,6 +3,7 @@
 install
 
 ```sh
+sudo apt install python3.12-venv
 python3 -m venv certbot_env
 source certbot_env/bin/activate
 pip install certbot certbot-nginx

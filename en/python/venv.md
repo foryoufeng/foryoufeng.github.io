@@ -8,4 +8,5 @@ sudo ln -sf /usr/bin/python3 /usr/bin/python
 mkdir demo
 cd demo
 python -m venv venv
+source venv/bin/activate
 ```
