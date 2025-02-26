@@ -85,3 +85,9 @@ which: see command location
 ```sh
 which ls
 ```
+
+sed
+```sh
+sed -i 's/l/a/g' 1.txt
+```
+

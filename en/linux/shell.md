@@ -61,3 +61,35 @@ for item in "${projects[@]}"; do
 done
 
 ```
+
+data input and output
+
+```sh
+find /home -name .bashrc 2> /dev/null
+ls aa || mkdir aa && touch aa/1.txt
+```
+
+if 
+```sh
+read -p "Please input" yn
+if ["${yn} == ""Y]; then
+   echo "Ok"
+elif ["${yn}" == "N"] ; then
+   echo "No"
+else
+   echo "undefined"   
+fi
+```
+
+function
+```sh
+function aa(){
+   echo "hello $1"
+}
+aa bob
+```
+
+keymap 
+```sh
+Ctrl + L  clear screen and to first line
+```
