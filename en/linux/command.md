@@ -24,14 +24,6 @@ systemctl
 systemctl list-units --type=service --state=active |grep php
 ```
 
-change linux shell login message
-```sh
-sudo vi /etc/motd
-cd /etc/update-motd.d/
-sudo chmod -x /etc/update-motd.d/*
-sudo vi /etc/issue
-```
-
 see linux kernel
 
 ```sh

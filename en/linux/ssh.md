@@ -43,3 +43,14 @@ chmod 700 ~/.ssh
 
 chmod 600 ~/.ssh/authorized_keys
 ```
+
+set connect time
+```sh
+ClientAliveInterval 300
+ClientAliveCountMax 2
+```
+
+restart sshd
+```sh
+sudo systemctl restart sshd
+```
