@@ -28,7 +28,7 @@ add file to serve
 ```sh
 cat ~/.ssh/ub.pub | ssh ubuntu@remote-server-ip 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 ```
-
+cat ~/.ssh/h1.pub | ssh www@1.94.250.32 'mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 close password login
 
 ```sh

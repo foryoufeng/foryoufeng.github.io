@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
 run
 ```sh
-unicorn --workers 3 --bind 0.0.0.0:5000 app:app &
+gunicorn --workers 3 --bind 0.0.0.0:5000 app:app &
 ```
 
 add service,`sudo vi /etc/systemd/system/grok.service`

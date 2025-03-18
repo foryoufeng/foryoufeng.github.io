@@ -43,3 +43,23 @@ install different python version
 
 
 ```
+
+upgrade python
+```sh
+sudo apt update
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt update
+sudo apt install python3.12 python3.12-dev python3.12-venv
+```
+
+ln python
+```sh
+sudo mv /usr/bin/python /usr/bin/python.bak
+sudo ln -sf /usr/bin/python3.12 /usr/bin/python
+```
+
+export package
+```sh
+pip freeze > requirements.txt
+```
