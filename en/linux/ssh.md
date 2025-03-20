@@ -54,3 +54,17 @@ restart sshd
 ```sh
 sudo systemctl restart sshd
 ```
+
+login to load .bashrc
+
+```sh
+vi ~/.bash_profile
+```
+
+add content 
+
+```sh
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+```

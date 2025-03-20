@@ -1,6 +1,23 @@
 # certbot
 
-install
+install by apt
+
+```sh
+sudo apt install certbot python3-certbot-nginx -y
+```
+
+install nginx
+```sh
+sudo certbot --nginx
+```
+
+add crontab 
+```sh
+0 0,12 * * * certbot renew --quiet
+```
+
+
+install by python
 
 ```sh
 sudo apt install python3.12-venv
@@ -15,7 +32,7 @@ run get https
 sudo /home/www/certbot_env/bin/certbot --nginx -d www.mythinkshop.cn
 ```
 
-add crontab 
+add crontab
 ```sh
 crontab -e
 
@@ -23,20 +40,8 @@ crontab -e
 
 ```
 
-install by apt
-
+see version
 ```sh
-sudo apt install certbot python3-certbot-nginx -y
-//if install
 certbot --version
 ```
 
-install nginx
-```sh
-sudo certbot --nginx
-```
-
-add crontab 
-```sh
-0 0,12 * * * certbot renew --quiet
-```
