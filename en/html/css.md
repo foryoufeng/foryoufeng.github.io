@@ -42,3 +42,16 @@ line-height
 ```sh
 line-height:10px;
 ```
+
+font color
+```sh
+.gradient-text {
+    font-size: 48px;
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(90deg, #4752e6, #de81de 50%);
+    -webkit-background-clip: text;
+    background-clip: text; 
+    color: transparent;
+    display: inline-block;
+}
+```

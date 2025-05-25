@@ -11,3 +11,8 @@ cd demo
 python -m venv venv
 source venv/bin/activate
 ```
+
+export package info
+```sh
+pip freeze > requirements.txt
+```
