@@ -2,7 +2,7 @@
 
 * install nvm
 ```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
 ```
 if github request error, change https to ssh
 

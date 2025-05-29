@@ -44,14 +44,14 @@ sudo systemctl restart php8.3-fpm.service
 
 install dependent
 ```sh
-sudo apt install -y ccache libjpeg-dev libxml2-dev libssl-dev  libpng-dev libfreetype6-dev libonig-dev libzip-dev libsqlite3-dev libcurl4-openssl-dev build-essential libtool autoconf libsodium-dev
+sudo apt install -y libgmp-dev ccache libjpeg-dev libxml2-dev libssl-dev  libpng-dev libfreetype6-dev libonig-dev libzip-dev libsqlite3-dev libcurl4-openssl-dev build-essential libtool autoconf libsodium-dev
 ```
 
 compile php
 
 ```sh
 wget https://www.php.net/distributions/php-8.3.14.tar.gz
-tar -xvjf php-8.3.14.tar.gz
+tar -zxvf php-8.3.14.tar.gz
 cd php-8.3.14
 //one command to compile
 ./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php  --enable-opcache --enable-bcmath    --enable-fpm     --enable-gd     --with-jpeg     --with-freetype     --enable-mbstring     --with-curl     --with-openssl     --enable-soap     --enable-sockets     --enable-ctype     --enable-sockets     --with-mysqli     --enable-mbregex     --with-pdo-mysql     --with-zlib   --with-zip   --enable-xml --enable-pcntl --with-sodium   --with-openssl --with-gmp
@@ -130,6 +130,10 @@ sudo systemctl list-units --type=service --state=active |grep php
 add opcache
 
 ```sh
+sudo vi /usr/local/php/php.ini
+```
+add config
+```sh
 [opcache]
 zend_extension=opcache.so
 opcache.enable=1
@@ -139,5 +143,14 @@ opcache.interned_strings_buffer=8
 opcache.max_accelerated_files=10000
 opcache.revalidate_freq=2
 opcache.fast_shutdown=1
+opcache.validate_timestamps=0
+```
 
+ini config
+```sh
+vi /usr/local/php/php.ini
+upload_max_filesize = 500M
+memory_limit  = 500M
+post_max_size = 1024M
+sudo systemctl restart php-fpm
 ```

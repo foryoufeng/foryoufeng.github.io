@@ -35,7 +35,6 @@ fn main() {
     let four =  Coin::Quarter(UsState::Alaska);
     println!("{:?}", value_in_cents(four));
 }
-
 ```
 
 Option<T>

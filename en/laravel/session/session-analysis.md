@@ -751,7 +751,7 @@ public function forget($keys)
 
 如果你想删除 Session 内所有数据，可以使用 flush 方法：
 
-```ohp
+```php
 public function flush()
 {
     $this->attributes = [];
