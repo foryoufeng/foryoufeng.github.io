@@ -11,5 +11,5 @@ alias sb='source ~/.bashrc'
 alias gc='git clone'
 alias ve='source venv/bin/activate'
 alias p='python'
-alias vb='vi ~/.bash_aliases'
+alias vb='vi ~/.bashrc'
 ```

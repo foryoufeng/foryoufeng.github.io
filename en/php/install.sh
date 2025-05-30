@@ -7,13 +7,32 @@ fi
 CURRENT_USER=$USER
 VERSION="8.4.5"
 PLATFORM="$1"
+WWW_PATH="/var/www/${PLATFORM}"
 NGINX="/etc/nginx/nginx.conf"
 NGINX_CONF="/etc/nginx/conf.d/$PLATFORM.conf"
-WWW_CONF="/usr/local/php/etc/php-fpm.d/www.conf"
+FPM_WWW_CONF="/usr/local/php/etc/php-fpm.d/www.conf"
 PHP_INI="/usr/local/php/php.ini"
 SERVICE_FILE="/etc/systemd/system/php-fpm.service"
 SUPERVISOR_CONF="/etc/supervisor/conf.d/${PLATFORM}.conf"
+MARKER="# >>> custom aliases <<<"
+if ! grep -q "$MARKER" ~/.bashrc; then
+  cat << 'EOF' >> ~/.bashrc
+
+# >>> custom aliases <<<
+alias nr='sudo service nginx restart'
+alias sb='source ~/.bashrc'
+alias gc='git clone'
+alias ve='source venv/bin/activate'
+alias p='python'
+alias vb='vi ~/.bashrc'
+EOF
+  echo "✅ Aliases added to ~/.bashrc"
+else
+  echo "ℹ️  Aliases already exist in ~/.bashrc, skipped."
+fi
+source ~/.bashrc
 sudo apt update
+if [ ! -d "php-$VERSION" ];then
 sudo apt install -y git ccache libjpeg-dev libxml2-dev libgmp-dev libssl-dev pkg-config libpng-dev libfreetype6-dev libonig-dev libzip-dev libsqlite3-dev libcurl4-openssl-dev build-essential libtool autoconf libsodium-dev
 wget https://www.php.net/distributions/php-$VERSION.tar.gz
 tar -zvxf php-$VERSION.tar.gz
@@ -22,13 +41,29 @@ cd php-$VERSION
 make -j$(nproc)
 sudo make install
 sudo cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
-sudo cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
-sudo sed -i "s/user = .*/user = $CURRENT_USER/" "$WWW_CONF"
-sudo sed -i "s/group = .*/group = $CURRENT_USER/" "$WWW_CONF"
-sudo sed -i 's|listen = .*|listen = /usr/local/php/php8-fpm.sock|' "$WWW_CONF"
-sudo sed -i "s/;listen.owner = .*/listen.owner = $CURRENT_USER/" "$WWW_CONF"
-sudo sed -i "s/;listen.group = .*/listen.group = $CURRENT_USER/" "$WWW_CONF"
-sudo sed -i 's/;listen.mode = .*/listen.mode = 0660/' "$WWW_CONF"
+sudo tee -a "$FPM_WWW_CONF" > /dev/null << 'EOF'
+[www]
+user = www
+group = www
+listen = /usr/local/php/php8-fpm.sock
+listen.owner = www
+listen.group = www
+listen.mode = 0660
+pm = dynamic
+
+pm.max_children = 32
+pm.start_servers = 4
+pm.min_spare_servers = 2
+pm.max_spare_servers = 8
+pm.max_requests = 500
+
+slowlog = /usr/local/php/php-slow.log
+request_slowlog_timeout = 5s
+request_terminate_timeout = 30s
+access.log = /usr/local/php/www-access.log
+access.format = "%R - %u %t \"%m %r\" %s %f %{mili}d %{kilo}M %C%%"
+catch_workers_output = yes
+EOF
 echo 'export PATH=/usr/local/php/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
 sudo ln -s /usr/local/php/bin/php /usr/bin/php
@@ -47,13 +82,9 @@ upload_max_filesize = 512M
 post_max_size = 512M
 date.timezone = Asia/Shanghai
 [extension]
-extension = gd
-extension = pdo_mysql
-extension = curl
-extension = mbstring
-extension = openssl
-extension = gmp
+
 [opcache]
+zend_extension=opcache.so
 opcache.enable = 1
 opcache.enable_cli = 0
 opcache.memory_consumption = 128
@@ -68,7 +99,9 @@ default_charset = "UTF-8"
 max_input_vars = 1000
 post_max_size = 512M
 EOF
-sudo bash -c "cat > '$SERVICE_FILE' << 'EOF'
+fi
+if [ ! -f "$SERVICE_FILE" ];then
+sudo tee "$SERVICE_FILE" > /dev/null << 'EOF'
 [Unit]
 Description=The PHP FastCGI Process Manager
 After=network.target
@@ -76,18 +109,19 @@ After=network.target
 [Service]
 Type=simple
 ExecStart=/usr/local/php/sbin/php-fpm --php-ini /usr/local/php/php.ini --nodaemonize --fpm-config /usr/local/php/etc/php-fpm.conf
-ExecReload=/bin/kill -USR2 $MAINPID
+ExecReload=/bin/kill -USR2 \$MAINPID
 PrivateTmp=true
 
 [Install]
 WantedBy=multi-user.target
-EOF"
+EOF
+fi
 sudo systemctl daemon-reload
 sudo systemctl enable php-fpm.service
 sudo systemctl start php-fpm.service
 sudo apt install nginx -y
 sudo bash -c "cat > '$NGINX'" <<EOF
-user www;
+user $CURRENT_USER;
 worker_processes auto;
 pid /run/nginx.pid;
 include /etc/nginx/modules-enabled/*.conf;
@@ -187,7 +221,7 @@ server {
     error_log  /var/log/nginx/$PLATFORM-error.log;
 
     listen 80;
-    server_name www.$PLATFORM.com api.$PLATFORM.com chun.$PLATFORM.com seller.$PLATFORM.com item.$PLATFORM.com crop.$PLATFORM.com shop.$PLATFORM.com;
+    server_name www.$PLATFORM.com api.$PLATFORM.com chun.$PLATFORM.com seller.$PLATFORM.com item.$PLATFORM.com crop.$PLATFORM.com shop.$PLATFORM.com jishi.$PLATFORM.com tdd.$PLATFORM.com;
 
 }
 EOF
@@ -196,6 +230,7 @@ sudo systemctl restart nginx
 sudo apt install supervisor -y
 sudo bash -c "cat > '$SUPERVISOR_CONF'" <<EOF
 [program:${PLATFORM}-shop]
+process_name=%(program_name)s_%(process_num)02d
 command=php /var/www/${PLATFORM}/shop/artisan queue:work
 autostart=true
 autorestart=true
@@ -204,10 +239,15 @@ numprocs=2
 redirect_stderr=true
 stdout_logfile=/var/log/supervisor/${PLATFORM}-worker.log
 EOF
-sudo supervisorctl reread
-sudo supervisorctl update
-sudo systemctl enable supervisor
 php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php composer-setup.php
 sudo mv composer.phar /usr/local/bin/composer
+cd "$WWW_PATH/shop"
+composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+php artisan config:cache
+php artisan route:cache
+#sudo supervisorctl reread
+#sudo supervisorctl update
+#sudo systemctl enable supervisor
+rm -f composer-setup.php php-$VERSION.tar.gz
 php -v
