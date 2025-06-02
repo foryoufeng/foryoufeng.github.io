@@ -7,6 +7,7 @@ sudo apt install fail2ban
 sudo systemctl enable fail2ban
 sudo systemctl start fail2ban
 sudo systemctl status fail2ban
+sudo fail2ban-client reload
 ```
 
 config
@@ -18,13 +19,13 @@ add config
 ```sh
 [DEFAULT]
 # 封禁时长（秒）600 秒 = 10 分钟
-bantime = 600
+bantime = 100d
 
 # 查找时间（秒）：在这个时间范围内超过 maxretry 次将被封禁
 findtime = 300
 
 # 失败多少次封禁
-maxretry = 5
+maxretry = 2
 
 # 封禁使用的防火墙方式（默认 iptables）
 banaction = ufw

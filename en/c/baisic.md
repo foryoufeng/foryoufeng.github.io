@@ -29,3 +29,15 @@ define
 #define NAME jim
 ```
 
+unsigned int 
+
+```sh
+#include <stdio.h>
+#include "math.h"
+
+#define A "hello"
+int main(){
+    unsigned int a= pow(2,32) -1;
+    printf("a = %u\n",a);
+}
+```
