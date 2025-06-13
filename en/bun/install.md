@@ -1,6 +1,8 @@
 # install
 
 ```sh
+sudo apt update
+sudo apt install unzip -y
 curl -fsSL https://bun.sh/install | bash
 ```
 
