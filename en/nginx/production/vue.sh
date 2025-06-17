@@ -35,7 +35,12 @@ server {
     client_max_body_size 50m;
     root "$ROOT_PATH/dist/";
     index index.html;
-
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff2?|ttf|map)$ {
+        try_files \$uri =404;
+        access_log off;
+        expires 7d;
+        add_header Cache-Control "public";
+    }
     location / {
        try_files \$uri \$uri/ /index.html;
     }
