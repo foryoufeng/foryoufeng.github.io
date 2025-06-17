@@ -9,3 +9,11 @@
 * Material Icon Theme
 * Markdown Preview Enhanced
 * docker
+
+# package extensions
+
+```sh
+npm install -g @vscode/vsce
+vsce package
+code --install-extension jetbrains-commit-panel-1.0.0.vsix
+```
