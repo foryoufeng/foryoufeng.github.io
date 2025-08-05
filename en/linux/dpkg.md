@@ -3,23 +3,28 @@
 install
 
 ```sh
-sudo dpkg -i packeg.deb
+sudo dpkg -i ngui.deb
 ```
 
 list
 
 ```sh
-dpkg -l |grep "wine"
+dpkg -l |grep "ngui"
 ```
 
 remove
 
 ```sh
-sudo dpkg -r packeg.deb
+sudo dpkg -r ngui
 ```
 
 repositories store
 
 ```sh
 cd /etc/apt/sources.list.d
+```
+
+see package info
+```sh
+dpkg -L ngui
 ```

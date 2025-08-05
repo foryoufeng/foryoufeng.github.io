@@ -104,3 +104,8 @@ else
     echo "找不到 SSH 服务，可能未安装 OpenSSH Server"
 fi
 ```
+
+last login
+```sh
+last -F | tac
+```
