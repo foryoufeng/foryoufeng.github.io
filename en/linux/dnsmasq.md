@@ -21,6 +21,7 @@ sudo vi /etc/dnsmasq.d/dv.conf
 add content
 ```sh
 address=/dv/192.168.54.200
+no-resolv
 ```
 
 see if dnsmasq listen 53

@@ -35,7 +35,7 @@ config mirror
 
 ```sh
 mkdir -p ~/.config/uv/
-vi ~/.config/uv/config.toml
+vi ~/.config/uv/uv.toml
 ```
 
 add mirror
