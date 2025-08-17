@@ -28,3 +28,8 @@ sudo make install
 sudo -u postgres psql
 
 ```
+
+see config
+```sh
+sudo -u postgres psql -c "SHOW config_file;"
+```

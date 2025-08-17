@@ -7,6 +7,11 @@ sudo apt install libgtk-3-dev -y
 sudo apt install libwebkit2gtk-4.0-dev -y
 ```
 
+see version
+```sh
+wails version
+```
+
 create project
 
 ```sh

@@ -2,7 +2,7 @@
 
 install
 ```sh
-sudo apt install ufw
+sudo apt install ufw -y
 sudo ufw enable
 //see detail
 sudo ufw status verbose
