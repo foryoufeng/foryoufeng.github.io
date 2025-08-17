@@ -12,3 +12,4 @@
 - Add Select For Next Occurrence  多行选中
 - Extend Selection 扩展选中区域
 - Toggle Case  字符切换大小写
+- `lorem10`   generate words   
