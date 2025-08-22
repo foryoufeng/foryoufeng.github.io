@@ -3,10 +3,10 @@
 ## install
 
 ```sh
-bun add -D vite
+bun add -D vite @vitejs/plugin-vue
 ```
 
-config vite
+config vite in `vite.config.js`
 
 ```sh
 import { defineConfig } from 'vite'

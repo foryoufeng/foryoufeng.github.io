@@ -8,10 +8,14 @@ install `Plugin Devkit`,`LivePlugin`
 config local idea to run plugin
 
 ```sh
-intellij {
-    localPath.set("/Applications/CLion.app/Contents")
-
-    plugins.set(listOf("JavaScript"))
+dependencies {
+    intellijPlatform {
+        local("/home/wuqiang/Applications/idea-IU-252.23892.409")
+        testFramework(org.jetbrains.intellij.platform.gradle.TestFrameworkType.Platform)
+        bundledPlugin("JavaScript")                 // 提供 JSLiteralExpression 等 JS PSI
+        bundledPlugin("org.jetbrains.plugins.vue")        // 处理 .vue / 模板内注入的 JS
+        bundledPlugin("com.intellij.modules.json")
+    }
 }
 ```
 
@@ -21,19 +25,11 @@ edit `plugin.xml`
 src/resources/META-INF/plugin.xml
 ```
 
-
-upgrade to Gradle Plugin 2.x
-
+add depends
 ```sh
-plugins {
-    id("java")
-    id("org.jetbrains.intellij.platform") version "2.7.1"
-}
-
-dependencies {
-    intellijPlatform {
-        local("/Users/wuqiang/Applications/IntelliJ IDEA Community Edition.app/Contents")
-    }
-}
+<depends>JavaScript</depends>
+<depends>org.jetbrains.plugins.vue</depends>
+<depends>com.intellij.modules.json</depends>
 ```
+
 

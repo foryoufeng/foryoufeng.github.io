@@ -18,7 +18,6 @@ set content
 ```sh
 [Unit]
 Description=MinIO Object Storage
-Documentation=https://docs.min.io
 Wants=network-online.target
 After=network-online.target
 
@@ -30,6 +29,8 @@ Restart=always
 LimitNOFILE=65536
 Environment="MINIO_ROOT_USER=minioadmin"
 Environment="MINIO_ROOT_PASSWORD=minioadmin"
+Environment="MINIO_SERVER_URL=http://s3.dv"
+Environment="MINIO_BROWSER_REDIRECT_URL=http://console.s3.dv"
 
 [Install]
 WantedBy=multi-user.target
@@ -48,4 +49,36 @@ start service
 sudo systemctl daemon-reload
 sudo systemctl enable minio
 sudo systemctl start minio
+```
+
+nginx config
+```sh
+server {
+    listen 80;
+    server_name s3.dv;
+
+    location / {
+        proxy_pass http://127.0.0.1:9000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    server_name console.s3.dv;
+
+    location / {
+        proxy_pass http://127.0.0.1:9001;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
 ```

@@ -9,6 +9,12 @@ CREATE DATABASE giteadb WITH OWNER gitea TEMPLATE template0 ENCODING UTF8 LC_COL
 ```
 
 set `pg_hba.conf`
+
+```sh
+sudo vi /etc/postgresql/15/main/pg_hba.conf
+```
+add content
+
 ```sh
 local    giteadb    gitea    scram-sha-256
 ```
@@ -62,6 +68,10 @@ HTTP_ADDR        = 127.0.0.1
 HTTP_PORT        = 3000
 
 ```
+
+
+
+
 
 add `/etc/systemd/system/gitea.service`
 ```sh
