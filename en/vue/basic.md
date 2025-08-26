@@ -120,3 +120,12 @@ onUnmounted(()=>{
     console.log("unmounted");
 })
 ```
+
+### defineModel
+
+
+```sh
+const model = defineModel({required:true})
+
+<HelloWorld v-model="countStore.count" />
+```
