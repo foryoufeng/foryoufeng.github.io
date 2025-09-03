@@ -1,6 +1,11 @@
 # user
 
-create
+create super user
+```sh
+CREATE ROLE admin WITH LOGIN PASSWORD '123456' SUPERUSER;
+```
+
+create user
 
 ```sh
 CREATE USER username WITH PASSWORD 'your_password';
