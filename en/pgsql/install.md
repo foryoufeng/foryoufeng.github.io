@@ -2,31 +2,9 @@
 
 ```sh
 sudo apt install postgresql postgresql-contrib
-sudo apt install postgresql-16-pgvector
 sudo systemctl status postgresql
 sudo systemctl enable postgresql
 sudo -u postgres psql
-```
-
-install pgvector
-
-```sh
-sudo apt install postgresql-16-pgvector
-sudo -u postgres psql -c "\dx"
-CREATE EXTENSION IF NOT EXISTS vector;
-```
-
-install pgvector by source
-
-```sh
-git clone git@github.com:pgvector/pgvector.git
-sudo apt install postgresql-server-dev-16 build-essential
-sudo apt install git make gcc libpq-dev
-cd pgvector
-make 
-sudo make install
-sudo -u postgres psql
-
 ```
 
 see config
@@ -37,7 +15,7 @@ sudo -u postgres psql -c "SHOW config_file;"
 config remote connections
 
 ```sh
-sudo vi /etc/postgresql/15/main/postgresql.conf
+sudo vi /etc/postgresql/16/main/postgresql.conf
 ```
 
 set 
@@ -46,7 +24,7 @@ listen_addresses = '*'
 ```
 
 ```sh
-sudo vi /etc/postgresql/15/main/pg_hba.conf
+sudo vi /etc/postgresql/16/main/pg_hba.conf
 ```
 
 add content
