@@ -1,4 +1,42 @@
-# type
+# basic type
+
+Boolean
+
+```sh
+let isDone: boolean = false;
+```
+
+Number
+
+```sh
+let a: number = 6;
+```
+
+String
+
+```sh
+let a:string ="bob";
+```
+
+
+Array
+
+```sh
+let list: number[] = [1,2,3];
+let list: Array<number> = [1, 2, 3];
+```
+
+enum
+
+```sh
+enum Color{
+    Red = "red",
+    Green = "green",
+    Blue = "blue",
+}
+let c = Color.Red
+console.log(c)
+```
 
 any
 
@@ -22,6 +60,14 @@ void
 ```sh
 function log(message:string):void{
   console.log(message)
+}
+```
+
+never
+
+```sh
+function s2():never{
+    throw TypeError;
 }
 ```
 
@@ -121,4 +167,13 @@ import {add,mul} from './demo.js'
 
 console.log(add(1,2))
 console.log(mul(3,2))
+```
+
+as
+
+```sh
+let someValue: any = "this is a string";
+
+let strLength: number = (someValue as string).length;
+
 ```

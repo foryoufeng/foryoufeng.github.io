@@ -26,7 +26,7 @@ printf
 
 define
 ```sh
-#define NAME jim
+#define NAME "jim"
 ```
 
 unsigned int 
