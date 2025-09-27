@@ -1,5 +1,20 @@
 # basic
 
+int
+
+```sh
+var a int = 12
+fmt.Println(a)
+```
+
+const 
+
+```sh
+const PI = 3.14
+fmt.Println(PI)
+```
+
+
 for
 
 ```sh
@@ -95,5 +110,17 @@ func main() {
 	for k, v := range mapStr {
 		fmt.Println(k, v)
 	}
+}
+```
+
+map
+
+```sh
+func main() {
+	obj := map[string]any{
+		"age":  1,
+		"name": "jim",
+	}
+	fmt.Println(obj["age"])
 }
 ```

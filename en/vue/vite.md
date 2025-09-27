@@ -3,17 +3,17 @@
 ## install
 
 ```sh
-bun add -D vite @vitejs/plugin-vue
+bun add -D vite @vitejs/plugin-vue vue vue-tsc
 ```
 
 config vite in `vite.config.js`
 
 ```sh
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import vuePlugin from '@vitejs/plugin-vue'
 
 export default defineConfig({
-  plugins: [vue()],
+  plugins: [vuePlugin()],
   server: {
     port: 3000
   },
