@@ -56,3 +56,43 @@ m1["age"] = 12
 m1["married"] = true
 fmt.Println(m1)
 ```
+
+assert
+
+```sh
+func main() {
+	m := map[string]any{
+		"sum": sum,
+		"age": 12,
+	}
+	v, ok := m["age"].(int)
+	if ok {
+		fmt.Println("age=", v)
+		fmt.Println(v)
+	}
+}
+```
+
+use switch to assert
+
+```sh
+func main() {
+	m := map[string]any{
+		"name": "jim",
+		"age":  12,
+	}
+	getType(m["name"])
+	getType(m["age"])
+
+}
+func getType(t any) {
+	switch t.(type) {
+	case int:
+		fmt.Println("int")
+	case string:
+		fmt.Println("string")
+	default:
+		fmt.Println("unknown")
+	}
+}
+```

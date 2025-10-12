@@ -19,3 +19,14 @@ double add(double a,double b){
 }
 ```
 
+function pointer
+
+```sh
+int add(int a,int b){
+    return a+b;
+}
+int main(){
+  int(*funAdd)(int,int)= add;
+  int c = funAdd(1,2);
+}
+```

@@ -135,7 +135,7 @@ func main() {
 }
 ```
 
-remove
+rename
 
 ```sh
 func main() {

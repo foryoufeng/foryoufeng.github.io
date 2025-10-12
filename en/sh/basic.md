@@ -52,3 +52,18 @@ for item in "${projects[@]}"; do
 done
 
 ```
+
+set alias
+
+```sh
+name=$(ls)
+echo $name
+```
+
+get params in `.sh` file
+
+```sh
+#!/usr/bin/env bash
+echo $0
+echo $1
+```

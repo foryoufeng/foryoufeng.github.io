@@ -178,3 +178,18 @@ if err != nil {
 }
 fmt.Println(s.Name)
 ```
+
+struct tag
+
+```sh
+type Person struct {
+	Name    string  `json:"name"`
+	Age     int     `json:"age"`
+}
+
+func main() {
+	p := &Person{"John", 20}
+	str, _ := json.Marshal(p)
+	fmt.Println(string(str))
+}
+```

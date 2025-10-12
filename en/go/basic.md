@@ -124,3 +124,65 @@ func main() {
 	fmt.Println(obj["age"])
 }
 ```
+
+print *
+
+```sh
+i := 33
+	for i > 0 {
+		fmt.Print("*")
+		i--
+	}
+	fmt.Println()
+	i = 5
+	for i > 0 {
+		fmt.Print("**")
+		j := 29
+		for j > 0 {
+			fmt.Print(" ")
+			j--
+		}
+		fmt.Println("**")
+		i--
+	}
+	i = 33
+	for i > 0 {
+		fmt.Print("*")
+		i--
+	}
+```
+
+9*9
+
+```sh
+package main
+
+import "fmt"
+
+func main() {
+	i := 1
+	for i <= 9 {
+		for j := 1; j <= i; j++ {
+			fmt.Print(i, "*", j, "=", i*j, "\t")
+		}
+		i++
+	}
+}
+
+```
+
+print string
+
+```sh
+package main
+
+import "fmt"
+
+func main() {
+	str := "你好golang"
+	for k, v := range str {
+		fmt.Println(k, string(v))
+	}
+}
+
+```
