@@ -33,3 +33,15 @@ hello world
 ```sh
 cargo new demo
 ```
+
+see version
+
+```sh
+rustup --version
+```
+
+update
+
+```sh
+rustup update
+```

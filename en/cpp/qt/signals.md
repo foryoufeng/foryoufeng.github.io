@@ -1,5 +1,30 @@
 # signals
 
+basic
+
+
+```sh
+class MainAppWidget:public QMainWindow{
+    Q_OBJECT
+public:
+    explicit MainAppWidget(QWidget *parent=0);
+
+signals:
+    void buttonClicked();
+private:
+    QPushButton *b;
+};
+
+connect(b, &QPushButton::clicked, [this]() {
+        qDebug() << "buttonClicked";
+        emit buttonClicked();
+    });
+connect(this, &MainAppWidget::buttonClicked, this, [this]() mutable  {
+    b->setText("Hello signal!");
+    qDebug() << "get buttonClicked signal";
+});
+```
+
 
 ```sh
 #ifndef QTHELLO_TEACHER_H
