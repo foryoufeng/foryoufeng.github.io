@@ -187,9 +187,59 @@ type Person struct {
 	Age     int     `json:"age"`
 }
 
+type User struct {
+	Name string `json:"name"`
+	Age  int    `json:"-"`
+}
+
 func main() {
 	p := &Person{"John", 20}
 	str, _ := json.Marshal(p)
 	fmt.Println(string(str))
 }
+```
+
+custom type
+
+```sh
+package main
+
+import "fmt"
+
+type Code int
+
+const (
+	CodeOk    Code = 0
+	CodeError Code = 1
+)
+
+func (c Code) getMessage(code Code) string {
+	switch code {
+	case CodeOk:
+		return "OK"
+	case CodeError:
+		return "Error"
+	}
+	return ""
+}
+
+func (c Code) getCodeMessage() (Code, string) {
+	return c, c.getMessage(c)
+}
+
+func Message(name string) (Code, string) {
+	switch name {
+	case "OK":
+		return CodeOk.getCodeMessage()
+	case "Error":
+		return CodeError.getCodeMessage()
+	default:
+		return CodeError.getCodeMessage()
+	}
+}
+func main() {
+	code, message := Message("OK")
+	fmt.Println(code, message)
+}
+
 ```

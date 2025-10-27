@@ -7,6 +7,24 @@ var a int = 12
 fmt.Println(a)
 ```
 
+str add int
+
+```sh
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+func main() {
+	name := "jim"
+	age := 23
+	fmt.Println(name + strconv.Itoa(age))
+}
+
+```
+
 const 
 
 ```sh

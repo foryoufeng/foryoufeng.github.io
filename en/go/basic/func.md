@@ -75,3 +75,22 @@ func main() {
 }
 ```
 
+more params
+
+```sh
+package main
+
+import "fmt"
+
+func hello(name string, list ...string) {
+	fmt.Println("hello", name)
+	for _, v := range list {
+		fmt.Println(v)
+	}
+}
+func main() {
+	hello("world", "java", "go")
+}
+
+```
+

@@ -24,6 +24,40 @@ func main() {
 }
 ```
 
+do shop 
+
+```sh
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+func shop(name string) {
+	time.Sleep(1 * time.Second)
+	fmt.Println("shop", name)
+	defer wg.Done()
+}
+
+var wg sync.WaitGroup
+
+func main() {
+
+	startTime := time.Now()
+	wg.Add(5)
+	go shop("shop")
+	go shop("shop2")
+	go shop("shop3")
+	go shop("shop4")
+	go shop("shop5")
+	wg.Wait()
+
+	endTime := time.Since(startTime)
+	fmt.Println(endTime)
+}
+```
 
 open channel
 
@@ -44,6 +78,51 @@ func main() {
 	wg.Wait()
 	fmt.Println("main end")
 }
+```
+
+do shop
+
+```sh
+package main
+
+import (
+	"fmt"
+	"sync"
+	"time"
+)
+
+var shopChan = make(chan int)
+
+func shop(name string, money int) {
+	time.Sleep(1 * time.Second)
+	fmt.Println("shop", name)
+	shopChan <- money
+	defer wg.Done()
+}
+
+var wg sync.WaitGroup
+
+func main() {
+
+	startTime := time.Now()
+	wg.Add(5)
+	go shop("shop", 2)
+	go shop("shop2", 3)
+	go shop("shop3", 4)
+	go shop("shop4", 5)
+	go shop("shop5", 6)
+	go func() {
+		wg.Wait()
+		close(shopChan)
+	}()
+	for money := range shopChan {
+		fmt.Println("money =", money)
+	}
+
+	endTime := time.Since(startTime)
+	fmt.Println(endTime)
+}
+
 ```
 
 print 
