@@ -12,3 +12,4 @@ In the Settings/Preferences dialog, expand the Build, Execution, Deployment cate
 
 Select Build Tools and then choose Gradle.
 
+`Build,Execution,Deployment > Build Tools > Gradle`

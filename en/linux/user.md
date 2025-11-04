@@ -77,7 +77,7 @@ chmod 0440 /etc/sudoers.d/www
 echo "已配置 www 用户免密码使用 sudo"
 
 # 修改 sshd_config 中的 PasswordAuthentication 为 no
-SSHD_CONFIG="/etc/ssh/sshd_config"
+    SSHD_CONFIG="/etc/ssh/sshd_config"
 if grep -q "^PasswordAuthentication" "$SSHD_CONFIG"; then
     sed -i 's/^PasswordAuthentication.*/PasswordAuthentication no/' "$SSHD_CONFIG"
 else
@@ -108,4 +108,13 @@ fi
 last login
 ```sh
 last -F | tac
+```
+
+add bash
+
+```sh
+echo $SHELL  # /bin/bash  if not need to change bash in `/etc/passwd` 
+cp /etc/skel/.bashrc /home/www/
+echo 'if [ -f ~/.bashrc ]; then . ~/.bashrc; fi' > ~/.bash_profile
+source ~/.bashrc
 ```
