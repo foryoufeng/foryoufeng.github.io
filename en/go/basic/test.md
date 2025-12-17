@@ -23,3 +23,50 @@ func TestGetUserAgent(t *testing.T) {
 }
 
 ```
+
+basic
+
+```sh
+package model
+
+import "testing"
+
+func TestAdd(t *testing.T) {
+	res := Add(1, 2)
+	if res != 3 {
+		t.Error("add fail")
+		return
+	}
+	t.Log(res)
+}
+
+```
+
+children test
+
+```sh
+package model
+
+import "testing"
+
+func TestAdd(t *testing.T) {
+	t.Run("Add", func(t *testing.T) {
+		res := Add(1, 2)
+		if res != 3 {
+			t.Error("add fail")
+			return
+		}
+		t.Log(res)
+	})
+	t.Run("Add2", func(t *testing.T) {
+		res := Add(-1, 2)
+		if res != 1 {
+			t.Error("add fail")
+			return
+		}
+		t.Log(res)
+	})
+
+}
+
+```
