@@ -28,3 +28,9 @@ add package
 ```sh
 cargo add anyhow
 ```
+
+build
+
+```sh
+cargo build --release
+```

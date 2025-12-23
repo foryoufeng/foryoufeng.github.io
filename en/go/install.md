@@ -17,6 +17,7 @@ vi ~/.bashrc
 add content
 ```sh
 export PATH=$PATH:/usr/local/go/bin
+sudo ln -s /usr/local/go/bin/go /usr/local/bin/go
 ```
 
 Apply change

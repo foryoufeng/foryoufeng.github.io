@@ -24,6 +24,12 @@ address=/dv/192.168.54.200
 no-resolv
 ```
 
+restart service
+
+```sh
+sudo systemctl restart dnsmasq
+```
+
 see if dnsmasq listen 53
 ```sh
 sudo lsof -i :53

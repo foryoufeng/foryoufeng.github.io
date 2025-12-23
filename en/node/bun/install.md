@@ -29,3 +29,9 @@ curl -fsSL https://bun.sh/install | bash
 |          | `bun.lockb`              | Bun 的锁定文件，保证依赖一致              |
 |          | `node_modules/`          | Bun 创建的依赖目录，使用硬链接提高性能         |
 |          | `~/.bun`                 | Bun 的缓存目录（依赖缓存、安装工具等）         |
+
+
+add to bash
+```sh
+sudo ln -s /home/www/.bun/bin/bun /usr/local/bin/bun
+```
