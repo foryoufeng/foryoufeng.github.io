@@ -2,7 +2,7 @@
 
 basic
 
-```sh
+```go
 package main
 
 import (
@@ -32,6 +32,6 @@ func main() {
 
 format show
 
-```sh
+```go
 data, err := json.MarshalIndent(movies, "", "    ")
 ```
