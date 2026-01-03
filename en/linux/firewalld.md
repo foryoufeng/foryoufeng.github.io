@@ -24,5 +24,6 @@ add ports
 sudo firewall-cmd --permanent --add-port=5432/tcp
 sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --permanent --add-port=22/tcp
+sudo firewall-cmd --permanent --add-port=3306/tcp
 sudo firewall-cmd --reload
 ```

@@ -35,3 +35,9 @@ see disk info
 ```sh
 vi /etc/fstab
 ```
+
+get current dir
+
+```sh
+du -h --max-depth=1 | sort -hr | head -10
+```
