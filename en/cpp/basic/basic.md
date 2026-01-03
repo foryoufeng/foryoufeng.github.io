@@ -112,7 +112,7 @@ int main(){
 
 ```
 
-auth
+auto
 
 ```sh
 int sum(int a,int b){

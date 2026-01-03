@@ -11,7 +11,7 @@ using namespace std;
 int main() {
 
     ofstream ofs;
-    ofs.open("1.txt",ios::out);
+    ofs.open("1.txt",ofstream::out);
     ofs<<"hello world"<<endl;
     ofs<<"hello world"<<endl;
     ofs<<"hello world"<<endl;

@@ -32,3 +32,11 @@ for element in a.iter(){
     println!("the element is :{}",element);
 }
 ```
+
+use for
+
+```sh
+for num in 1..=5{
+   println!("{}",num);
+}
+```

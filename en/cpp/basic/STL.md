@@ -27,7 +27,9 @@ void print(){
         cout << *it << endl;
     }
     for_each(v.begin(),v.end(), myPrint);
-
+    for (const int item: v) {
+        cout << item << endl;
+    }
 }
 
 int main() {
@@ -102,5 +104,86 @@ int main() {
         }
         cout << "   " << endl;
     }
+}
+```
+
+save object
+
+```sh
+
+class Person {
+public:
+    int id;
+    Person(int id) {
+        this->id = id;
+    };
+    void show() {
+        cout << this->id << endl;
+    }
+};
+int main() {
+    const Person p(1);
+    const Person p2(2);
+    const Person p3(3);
+    const Person p4(4);
+    const Person p5(5);
+    vector<Person> list;
+    list.push_back(p);
+    list.push_back(p2);
+    list.push_back(p3);
+    list.push_back(p4);
+    list.push_back(p5);
+    for (Person person: list) {
+        person.show();
+    }
+}
+
+```
+
+method
+
+```sh
+
+int main() {
+    vector<int> v;
+    v.push_back(1);
+    v.push_back(2);
+    bool flag = v.empty();
+    cout << flag << endl;
+    int size = v.size();
+    int size2 = v.capacity();
+    cout << size2 << endl;
+    v.resize(10);
+    cout << size << endl;
+    size2 = v.capacity();
+    cout << size2 << endl;
+    int a = v.back();
+    cout << a << endl;
+    int b = v.at(1);
+    cout << b << endl;
+    int d = v[0];
+    cout << d << endl;
+    int c = v.front();
+    cout << c << endl;
+}
+
+```
+
+use
+
+```sh
+int main() {
+    vector<int> v;
+    for (int i = 0; i < 100000; ++i) {
+        v.push_back(i);
+    }
+    cout << "capacity="<<v.capacity() << endl;
+    cout << "size="<<v.size() << endl;
+    v.resize(3);
+    cout << "capacity="<<v.capacity() << endl;
+    cout << "size="<<v.size() << endl;
+    v.shrink_to_fit();
+    cout << "capacity="<<v.capacity() << endl;
+    cout << "size="<<v.size() << endl;
 }
 ```

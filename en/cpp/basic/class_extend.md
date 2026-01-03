@@ -23,7 +23,7 @@ public:
     }
 };
 
-class Python :public Page{
+class Python : virtual public Page{
 public:
     void content(){
         this->header();
@@ -42,3 +42,4 @@ int main() {
     p.content();
 }
 ```
+

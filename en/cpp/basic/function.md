@@ -30,3 +30,18 @@ int main(){
   int c = funAdd(1,2);
 }
 ```
+
+function template
+
+```sh
+template <typename T>
+T sum(T a,T b){
+    return a + b;
+}
+int main(){
+    int c = sum<int>(1,2);
+    double d = sum<double>(1.2,2.5);
+    cout << c << endl;
+    cout << d << endl;
+}
+```

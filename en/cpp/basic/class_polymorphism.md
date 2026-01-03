@@ -1,6 +1,36 @@
 # class
 
+basic
 
+```sh
+using namespace std;
+
+class Base {
+public:
+    virtual ~Base() = default;
+
+    int a=0;
+    virtual void test() const {
+        std::cout << "base test "<<this->a << std::endl;
+    }
+};
+class Child: public Base {
+public:
+    int b=1;
+    void test() const override {
+        std::cout << "child test "<<this->a << std::endl;
+    }
+};
+
+void test(const Base &base) {
+    base.test();
+}
+
+int main() {
+    constexpr Child child;
+    test(child);
+}
+```
 
 ```sh
 class Animal{

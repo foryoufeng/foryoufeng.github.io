@@ -18,3 +18,17 @@ let condition =  true;
 let number = if condition { 5 } else { 6 };
 println!("{}", number);
 ```
+
+match
+
+```sh
+let num = 3;
+let choose = match num {
+    0 => "zero",
+    1 => "one",
+    2 => "two",
+    3 => "three",
+    _ => "four",
+};
+println!("{}",choose);
+```

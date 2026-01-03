@@ -45,6 +45,31 @@ int main(){
 }
 ```
 
+get object
+
+```sh
+class Person {
+
+public:
+    Person() {
+        cout << "Person() called" << endl;
+    }
+    Person(int age) {
+        cout << "Person() int age called" <<age<< endl;
+    }
+    ~Person() {
+        cout << "~Person() called" << endl;
+    }
+};
+
+int main() {
+    Person p;
+    Person p2(2);
+    Person p3 = Person(3);
+    Person p4 = 4;
+}
+```
+
 copy constructor
 
 ```sh
@@ -166,5 +191,30 @@ public:
 
 int main() {
     B b(12);
+}
+```
+
+this
+
+
+```sh
+class User {
+public:
+
+    int age=0;
+    mutable string name;
+    static int number;
+    User& setAge(int age) {
+        this->age += age;
+        return *this;
+    }
+    void setName(string name) const {
+        this->name = std::move(name);
+    }
+};
+int main() {
+    User u;
+    u.setAge(10).setAge(20).setAge(30);
+    cout << u.age << endl;
 }
 ```

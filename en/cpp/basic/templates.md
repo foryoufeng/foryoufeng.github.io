@@ -40,6 +40,31 @@ int main() {
 }
 ```
 
+class default type
+
+```sh
+using namespace std;
+
+template<class T=string,class U=int>
+class Person {
+public:
+    T name;
+    U age;
+    Person(T _name, U _age) {
+        name = std::move(_name);
+        age = _age;
+    }
+    void show() {
+        cout << name << " " << age << endl;
+    }
+};
+
+int main() {
+    Person person("jim",12);
+    person.show();
+}
+```
+
 class function
 
 ```sh
