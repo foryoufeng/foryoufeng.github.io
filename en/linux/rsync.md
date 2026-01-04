@@ -1,8 +1,9 @@
 # rsync
 
 install
-```sh
 
+```sh
+sudo apt install rsync -y
 ```
 
 upload to server

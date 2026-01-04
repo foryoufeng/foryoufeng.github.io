@@ -102,3 +102,26 @@ networks:
   default:
     name: milvus
 ```
+
+use source code
+```sh
+wget https://github.com/milvus-io/milvus/releases/download/v2.6.7/milvus_2.6.7-1_amd64.deb
+sudo apt install -y ./milvus_2.6.7-1_amd64.deb
+sudo systemctl start milvus
+sudo systemctl status milvus
+```
+
+edit config
+```sh
+sudo vi /etc/milvus/configs/milvus.yaml
+```
+
+config password  or use client attu to change password
+
+```sh
+listenAddress
+authorizationEnabled: true
+    defaultRootPassword
+```
+
+data save in `/var/lib/milvus`
