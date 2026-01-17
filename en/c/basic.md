@@ -41,3 +41,20 @@ int main(){
     printf("a = %u\n",a);
 }
 ```
+
+print
+
+```sh
+void printNums(int *nums,int len) {
+    for (int i = 0; i < len; i++) {
+        printf("%d\n", nums[i]);
+    }
+}
+
+int main() {
+    int a[] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int len = sizeof(a)/sizeof(int);
+    printNums(a,len);
+    return 0;
+}
+```
