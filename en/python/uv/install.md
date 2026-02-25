@@ -3,7 +3,7 @@
 ```sh
 sudo apt update
 sudo apt install pipx -y
-pipx install uv
+pipx install uv --pip-args="--index-url https://pypi.tuna.tsinghua.edu.cn/simple"
 pipx ensurepath
 ```
 
@@ -23,12 +23,6 @@ install package
 
 ```sh
 uv add python-dotenv
-```
-
-sync
-
-```sh
-uv sync
 ```
 
 config mirror

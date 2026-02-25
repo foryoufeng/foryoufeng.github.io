@@ -13,3 +13,7 @@ sudo apt install -y \
     libxxf86vm-dev
 ```
 
+build
+```sh
+fyne package -os linux -icon myapp.png -release
+```

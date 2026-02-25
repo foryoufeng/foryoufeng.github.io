@@ -14,9 +14,16 @@ GRANT ALL PRIVILEGES ON `laravel-shop`.* TO 'shop'@'%';
 FLUSH PRIVILEGES;
 ```
 
+revoke permissions
+```sh
+REVOKE ALL PRIVILEGES ON `deploy`.* FROM 'admin'@'%';
+FLUSH PRIVILEGES;
+```
+
 change user password
 
 ```sh
 ALTER USER 'alice'@'%' IDENTIFIED BY 'MyN3wP@ss!';
 FLUSH PRIVILEGES;
 ```
+

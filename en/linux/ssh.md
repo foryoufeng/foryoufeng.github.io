@@ -52,6 +52,8 @@ ClientAliveCountMax 2
 
 restart sshd
 ```sh
+sudo apt update
+sudo apt install sshd
 sudo systemctl restart sshd
 ```
 

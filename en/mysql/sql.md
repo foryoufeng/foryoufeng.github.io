@@ -14,3 +14,10 @@ FROM
 WHERE 
     CONSTRAINT_NAME = 'goods_id_f';
 ```
+
+create databases
+```sh
+CREATE DATABASE deploy
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;
+```

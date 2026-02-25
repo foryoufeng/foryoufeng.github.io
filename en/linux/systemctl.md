@@ -39,3 +39,43 @@ see service taking time
 ```sh
 systemd-analyze blame
 ```
+
+add laravel-queue
+
+```sh
+sudo vi /etc/systemd/system/moodoodoo-queue.service
+```
+
+add content 
+```sh
+[Unit]
+Description=moodoodoo Queue Worker
+After=network.target
+
+[Service]
+User=www
+Group=www
+Restart=always
+RestartSec=5
+
+WorkingDirectory=/var/www/moodoodoo/shop/
+ExecStart=php /var/www/moodoodoo/shop/artisan queue:work --sleep=3 --tries=3 --timeout=90 --queue=moodoodoo
+
+StandardOutput=append:/var/log/moodoodoo-queue.log
+StandardError=append:/var/log/moodoodoo-queue-error.log
+
+KillSignal=SIGTERM
+TimeoutStopSec=60
+
+[Install]
+WantedBy=multi-user.target
+
+```
+
+reload systemd
+```sh
+sudo systemctl daemon-reload
+sudo systemctl enable moodoodoo-queue.service
+sudo systemctl start moodoodoo-queue.service
+sudo systemctl status moodoodoo-queue.service
+```
