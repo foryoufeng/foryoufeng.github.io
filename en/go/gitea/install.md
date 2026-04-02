@@ -21,7 +21,7 @@ local    giteadb    gitea    scram-sha-256
 
 login pgsql
 ```sh
-psql -U gitea -d giteadb
+sudo -u postgres psql -d giteadb
 ```
 
 
@@ -68,10 +68,6 @@ HTTP_ADDR        = 127.0.0.1
 HTTP_PORT        = 3000
 
 ```
-
-
-
-
 
 add `/etc/systemd/system/gitea.service`
 ```sh
@@ -125,3 +121,6 @@ restart nginx
 ```sh
 sudo systemctl restart nginx
 ```
+
+
+

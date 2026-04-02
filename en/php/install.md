@@ -1,45 +1,5 @@
 # install php
 
-## ubuntu 
-
-* remove apache2
-```
-sudo systemctl stop apache2
-sudo systemctl disable apache2
-sudo apt remove apache2 -y
-sudo apt purge apache2 -y
-sudo apt autoremove -y
-sudo apt remove apache2-bin
-```
-
-```
-sudo apt install php php-common php-mysql php-gd php-json php-zip php-mbstring php-bcmath  php-gmp php-fpm php-curl php-pgsql php-pear php-xml {cgi,intl,zip} -y
-```
-
-* if need xdebug
-```
-sudo apt-get install php-xdebug
-```
-
-install dev
-
-```
-sudo apt-get install php8.3-dev
-```
-
-install ssh2
-
-```
-sudo pecl channel-update pecl.php.net
-pecl install ssh2
-```
-
-restart
-
-```
-sudo systemctl restart php8.3-fpm.service
-```
-
 ## php source install 
 
 install dependent
@@ -50,23 +10,19 @@ sudo apt install -y libgmp-dev ccache libjpeg-dev libxml2-dev libssl-dev  libpng
 compile php
 
 ```sh
-wget https://www.php.net/distributions/php-8.3.14.tar.gz
-tar -zxvf php-8.3.14.tar.gz
-cd php-8.3.14
-//one command to compile
-./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php  --enable-opcache --enable-bcmath    --enable-fpm     --enable-gd     --with-jpeg     --with-freetype     --enable-mbstring     --with-curl     --with-openssl     --enable-soap     --enable-sockets     --enable-ctype     --enable-sockets     --with-mysqli     --enable-mbregex     --with-pdo-mysql     --with-zlib   --with-zip   --enable-xml --enable-pcntl --with-sodium   --with-openssl --with-gmp
+wget https://www.php.net/distributions/php-8.4.5.tar.gz
+tar -zxvf php-8.4.5.tar.gz
+cd php-8.4.5
+./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php  --enable-opcache --enable-bcmath  --enable-fpm  --enable-gd --with-jpeg --with-freetype --enable-mbstring     --with-curl     --with-openssl     --enable-soap --enable-sockets --enable-ctype     --enable-mbregex     --with-pdo-mysql     --with-zlib   --with-zip   --enable-xml --enable-pcntl --with-sodium   --with-openssl
 make -j$(nproc)
 sudo make install
-sudo cp php.ini-production /usr/local/php/php.ini
 sudo cp /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
-sudo cp /usr/local/php/etc/php-fpm.d/www.conf.default /usr/local/php/etc/php-fpm.d/www.conf
 echo 'export PATH=/usr/local/php/bin:$PATH' >> ~/.bashrc
 source ~/.bashrc
 php -m | grep -E 'PDO|xml'
 sudo ln -s /usr/local/php/bin/php /usr/bin/php
 php -v
 ```
-
 
 ## php-fpm
 
@@ -79,13 +35,51 @@ sudo vi /usr/local/php/etc/php-fpm.d/www.conf
 change config and save
 
 ```sh
-user = wuqiang 
-group = wuqiang
+user = www 
+group = www
 
-listen = /usr/local/php/php8.3-fpm.sock
-listen.owner = wuqiang 
-listen.group = wuqiang 
+listen = /usr/local/php/php-fpm.sock
+listen.owner = www 
+listen.group = www 
 listen.mode = 0660 
+```
+
+add php.ini
+
+```sh
+sudo vi /usr/local/php/php.ini
+```
+add config
+```sh
+[PHP]
+error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
+display_errors = Off
+log_errors = On
+error_log = /var/log/php-fpm/run-errors.log
+expose_php = Off
+max_execution_time = 30
+memory_limit = 512M
+output_buffering = 4096
+file_uploads = On
+upload_max_filesize = 512M
+max_file_uploads = 100
+post_max_size = 512M
+date.timezone = Asia/Shanghai
+[extension]
+
+[opcache]
+opcache.enable = 1
+opcache.enable_cli = 0
+opcache.memory_consumption = 128
+opcache.interned_strings_buffer = 8
+opcache.max_accelerated_files = 10000
+opcache.revalidate_freq = 2
+opcache.fast_shutdown = 1
+opcache.save_comments = 1
+opcache.enable_file_override = 1
+default_charset = "UTF-8"
+max_input_vars = 1000
+post_max_size = 512M
 ```
 
 add Systemd Service
@@ -125,32 +119,4 @@ see if php-fpm is start
 ```sh
 sudo systemctl status php-fpm
 sudo systemctl list-units --type=service --state=active |grep php
-```
-
-add opcache
-
-```sh
-sudo vi /usr/local/php/php.ini
-```
-add config
-```sh
-[opcache]
-zend_extension=opcache.so
-opcache.enable=1
-opcache.enable_cli=1
-opcache.memory_consumption=128
-opcache.interned_strings_buffer=8
-opcache.max_accelerated_files=10000
-opcache.revalidate_freq=2
-opcache.fast_shutdown=1
-opcache.validate_timestamps=0
-```
-
-ini config
-```sh
-vi /usr/local/php/php.ini
-upload_max_filesize = 500M
-memory_limit  = 500M
-post_max_size = 1024M
-sudo systemctl restart php-fpm
 ```

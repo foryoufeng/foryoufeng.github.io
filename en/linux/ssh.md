@@ -70,3 +70,8 @@ if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
 ```
+
+ssh port
+```sh
+ssh -p 43389 root@154.201.77.212
+```

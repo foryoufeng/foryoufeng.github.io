@@ -16,8 +16,9 @@ add `satis.json`
         { "type": "composer", "url": "https://packagist.org" }
     ],
     "require": {
+        "alibabacloud/dingtalk": "^2.1",
         "alibabacloud/dyvmsapi-20170525": "^3.2",
-        "alibabacloud/sdk": "^1.8",
+        "alibabacloud/push-20160801": "^2.1",
         "alibabacloud/sts-20150401": "^1.1",
         "aliyunmq/mq-http-sdk": "^1.0",
         "alphasnow/aliyun-oss-laravel": "^4.7",
@@ -87,8 +88,9 @@ add online server
         { "type": "composer", "url": "https://packagist.org" }
     ],
     "require": {
+        "alibabacloud/dingtalk": "^2.1",
         "alibabacloud/dyvmsapi-20170525": "^3.2",
-        "alibabacloud/sdk": "^1.8",
+        "alibabacloud/push-20160801": "^2.1",
         "alibabacloud/sts-20150401": "^1.1",
         "aliyunmq/mq-http-sdk": "^1.0",
         "alphasnow/aliyun-oss-laravel": "^4.7",
@@ -127,7 +129,6 @@ add online server
         "wechatpay/wechatpay": "^1.4",
         "wubuwei/php-apple-signin": "^2.0",
         "composer/composer": "^2.9.4",
-        "composer-plugin-api": "^2.3.0",
         "symfony/console": "^7.4.4",
         "twig/twig": "^3.23.0",
         "twig/html-extra": "^3.23.0"
