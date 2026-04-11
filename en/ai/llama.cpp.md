@@ -8,6 +8,19 @@ cmake -B build   -DGGML_CUDA=ON   -DCMAKE_CUDA_COMPILER=/usr/local/cuda/bin/nvcc
 cmake --build build -j$(nproc)
 ./build/bin/llama-cli --help | grep -i cuda
 ```
+install new cuda
+
+```sh
+wget https://developer.download.nvidia.com/compute/cuda/12.4.1/local_installers/cuda_12.4.1_550.54.15_linux.run
+chmod +x cuda_12.4.1_550.54.15_linux.run
+sudo ./cuda_12.4.1_550.54.15_linux.run
+
+cmake -B build \
+  -DGGML_CUDA=ON \
+  -DCUDAToolkit_ROOT=/usr/local/cuda-12.4 \
+  -DGGML_CUDA_ARCH=86 \
+  -DLLAMA_CURL=OFF
+```
 
 run model
 

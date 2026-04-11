@@ -13,6 +13,7 @@ compile php
 wget https://www.php.net/distributions/php-8.4.5.tar.gz
 tar -zxvf php-8.4.5.tar.gz
 cd php-8.4.5
+./buildconf
 ./configure --prefix=/usr/local/php --with-config-file-path=/usr/local/php  --enable-opcache --enable-bcmath  --enable-fpm  --enable-gd --with-jpeg --with-freetype --enable-mbstring     --with-curl     --with-openssl     --enable-soap --enable-sockets --enable-ctype     --enable-mbregex     --with-pdo-mysql     --with-zlib   --with-zip   --enable-xml --enable-pcntl --with-sodium   --with-openssl
 make -j$(nproc)
 sudo make install
