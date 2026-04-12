@@ -60,14 +60,36 @@ run it
 run server
 
 ```sh
-./build/bin/llama-server -m ./models/gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf -ngl 999 -c 16384  --port 8080
+./build/bin/llama-server -m ./models/gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf -ngl 999 -c 16384  --host 0.0.0.0 --port 8090 
 ```
 
 ```sh
-curl http://localhost:8080/completion   -d '{
+curl http://localhost:8090/completion   -d '{
     "prompt": "<bos><start_of_turn>user\n use vite to create vue3 and write a user register include username,email,password  and login page and forget password and home page for sell goods<end_of_turn>\n<start_of_turn>model\n"
   }'
 
 ```
 
+
 use vite to create vue3 and react to write a user register include username,email,password  and login page and forget password and home page for sell goods
+
+download 31b
+
+```sh
+modelscope download \
+  --model unsloth/gemma-4-31B-it-GGUF \
+  --include "gemma-4-31B-it-Q5_K_S.gguf" \
+  --local_dir ./models/
+```
+
+run it
+
+```sh
+    ./build/bin/llama-cli -m ./models/gemma-4-31B-it-Q5_K_S.gguf  -ngl 999  -b 1024 -c 2048 -p "You use system is debian"
+```
+
+run q4
+
+```sh
+./build/bin/llama-cli -m ./models/gemma-4-31B-it-Q4_K_M.gguf  -ngl 999  -b 1024 -c 2048 -p "You use system is debian"
+```
