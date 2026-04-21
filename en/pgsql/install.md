@@ -1,7 +1,7 @@
 # install
 
 ```sh
-sudo apt install postgresql postgresql-contrib
+sudo apt install postgresql postgresql-contrib -y
 sudo systemctl status postgresql
 sudo systemctl enable postgresql
 sudo -u postgres psql

@@ -4,7 +4,7 @@
 
 install dependent
 ```sh
-sudo apt install -y libgmp-dev ccache libjpeg-dev libxml2-dev libssl-dev  libpng-dev libfreetype6-dev libonig-dev libzip-dev libsqlite3-dev libcurl4-openssl-dev build-essential libtool autoconf libsodium-dev
+sudo apt install -y pkg-config libgmp-dev ccache libjpeg-dev libxml2-dev libssl-dev  libpng-dev libfreetype6-dev libonig-dev libzip-dev libsqlite3-dev libcurl4-openssl-dev build-essential libtool autoconf libsodium-dev
 ```
 
 compile php
@@ -36,13 +36,28 @@ sudo vi /usr/local/php/etc/php-fpm.d/www.conf
 change config and save
 
 ```sh
-user = www 
+[www]
+user = www
 group = www
-
 listen = /usr/local/php/php-fpm.sock
-listen.owner = www 
-listen.group = www 
-listen.mode = 0660 
+listen.owner = www
+listen.group = www
+listen.mode = 0660
+pm = dynamic
+
+pm.max_children = 32
+pm.start_servers = 4
+pm.min_spare_servers = 2
+pm.max_spare_servers = 8
+pm.max_requests = 500
+
+slowlog = /usr/local/php/php-slow.log
+request_slowlog_timeout = 5s
+request_terminate_timeout = 120s
+access.log = /usr/local/php/www-access.log
+access.format = "%R - %u %t \"%m %r\" %s %f %{mili}d %{kilo}M %C%%"
+catch_workers_output = yes
+
 ```
 
 add php.ini

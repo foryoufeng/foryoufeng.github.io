@@ -37,6 +37,12 @@ nvm use 22
 node -v
 ```
 
+add bin
+```sh
+sudo ln -s /home/www/.config/nvm/versions/node/v22.21.1/bin/npm /usr/bin/npm
+sudo ln -s /home/www/.config/nvm/versions/node/v22.21.1/bin/node /usr/bin/node
+```
+
 # npm config
 ```
 npm config set registry https://registry.npmmirror.com

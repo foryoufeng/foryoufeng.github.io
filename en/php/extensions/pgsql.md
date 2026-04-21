@@ -16,7 +16,7 @@ config php.ini
 ```sh
 sudo vi /usr/local/php/php.ini
 # add extension
-extension=pgsql
+extension=pdo_pgsql
 ```
 
 see if extension  install
