@@ -51,3 +51,13 @@ run
 ```sh
 gcc -o main main.c -D DEBUG
 ```
+
+build
+
+```sh
+gcc -E add.c >add.ii
+gcc -S add.ii add.s
+gcc -S add.ii
+gcc -c add.s
+
+```

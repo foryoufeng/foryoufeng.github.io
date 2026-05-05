@@ -93,3 +93,18 @@ run q4
 ```sh
 ./build/bin/llama-cli -m ./models/gemma-4-31B-it-Q4_K_M.gguf  -ngl 999  -b 1024 -c 2048 -p "You use system is debian"
 ```
+
+download Qwen3.5-27B
+
+```sh
+modelscope download \
+  --model unsloth/Qwen3.5-27B-gguf \
+  --include "Qwen3.5-27B-Q4_K_M.gguf" \
+  --local_dir ./models/
+```
+
+run
+
+```sh
+./build/bin/llama-cli -m ./models/Qwen3.5-27B-Q4_K_M.gguf  -ngl 999  -b 1024 -c 2048 -p "You use system is debian"
+```

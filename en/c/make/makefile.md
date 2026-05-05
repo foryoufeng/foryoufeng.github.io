@@ -42,3 +42,101 @@ else
 $(info var!=var2)
 endif
 ```
+
+basic use
+
+```sh
+calc:add.o sub.o multi.o
+	$(CC) add.o sub.o multi.o calc.c -o calc
+
+add.o:add.c
+	$(CC) -c add.c -o add.o
+
+sub.o:sub.c
+	$(CC) -c sub.c -o sub.o
+
+multi.o:multi.c
+	$(CC) -c multi.c -o multi.o
+
+clean:
+	rm -f *.o calc
+```
+
+use var
+
+```sh
+OBJS=add.o sub.o multi.o calc.o
+TARGET=calc
+
+${TARGET}:${OBJS}
+	$(CC) ${OBJS} -o ${TARGET}
+
+add.o:add.c
+	$(CC) -c add.c -o add.o
+
+sub.o:sub.c
+	$(CC) -c sub.c -o sub.o
+
+multi.o:multi.c
+	$(CC) -c multi.c -o multi.o
+
+calc.o:calc.c
+	$(CC) -c calc.c -o calc.o
+
+clean:
+	rm -f *.o calc
+```
+
+change
+
+```sh
+OBJS=add.o sub.o multi.o calc.o
+TARGET=calc
+
+$(TARGET):$(OBJS)
+	$(CC) $^ -o $@
+
+add.o:add.c
+	$(CC) -c $^ -o $@
+
+sub.o:sub.c
+	$(CC) -c $^ -o $@
+
+multi.o:multi.c
+	$(CC) -c $^ -o $@
+
+calc.o:calc.c
+	$(CC) -c $^ -o $@
+
+clean:
+	rm -f *.o $(TARGET)
+```
+
+change more
+
+```sh
+.PHONY: clean
+
+OBJS=add.o sub.o multi.o calc.o
+TARGET=calc
+
+all:$(TARGET)
+
+$(TARGET):$(OBJS)
+	$(CC) $^ -o $@
+
+%.o:%.c
+	$(CC) -c $^ -o $@
+
+clean:
+	rm -f *.o $(TARGET)
+```
+
+makefile will run all var ,then computer
+
+```sh
+A=123
+B=$(A)
+A=456
+# B=456
+```
