@@ -19,6 +19,7 @@ CREATE USER myuser WITH LOGIN CREATEDB PASSWORD 'mypassword';
 give permission
 ```sh
 GRANT ALL PRIVILEGES ON DATABASE mydb TO myuser;
+GRANT ALL ON SCHEMA public TO myuser;
 ```
 
 show users

@@ -1,7 +1,7 @@
 # install
 
 ```sh
-curl -fsSL https://claude.ai/install.sh | bash
+npm install -g @anthropic-ai/claude-code
 ```
 
 Then start Claude Code in any project:
@@ -36,3 +36,14 @@ config ali coder
 }
 
 ```
+
+{
+   "hasCompletedOnboarding": true,
+  "hasAcceptedTerms": true,
+  "isLoggedIn": true,
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "sk-sp-6105958a9aeb4a8bbf315cff3e3d22bb",
+    "ANTHROPIC_BASE_URL": "https://coding.dashscope.aliyuncs.com/apps/anthropic",
+    "ANTHROPIC_MODEL": "qwen3.5-plus"
+  }
+}
