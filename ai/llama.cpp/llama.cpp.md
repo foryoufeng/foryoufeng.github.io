@@ -39,6 +39,7 @@ run server
 llama-cli -m /home/ubuntu/wuqiang/soft/models/gemma-4-E2B-it-Q4_K_S.gguf  -ngl 999  -b 1024  -p "hello"
 llama-server  -m /home/ubuntu/wuqiang/soft/models/gemma-4-E2B-it-Q4_K_S.gguf --threads 8 --ctx-size 2048 --host 0.0.0.0 --port 8090
 llama-server  -m /home/ubuntu/wuqiang/soft/models/gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf --threads 8 --ctx-size 2048 --host 0.0.0.0 --port 8090
+llama-server -m /home/ubuntu/wuqiang/soft/models/gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf  --threads 8  --ctx-size 2048 -ngl 999 -c 16384 --jinja  --host 0.0.0.0 --port 8090 
 ```
 
 request it
@@ -47,3 +48,15 @@ curl -X POST http://localhost:8090/v1/completions -H "Content-Type: application/
 ```
 
 curl -X POST http://192.168.2.52:8090/v1/completions -H "Content-Type: application/json" -d '{ "model": "gemma-3-27b-it-Q6_K","prompt": "hello"}'
+
+
+download gemma-4-31B
+
+```sh
+modelscope download \
+  --model unsloth/gemma-4-31B-it-GGUF \
+  --include "gemma-4-31B-it-UD-Q8_K_XL.gguf" \
+  --local_dir ./models/
+```
+
+llama-cli gemma-4-26B-A4B-it-UD-Q4_K_XL.gguf  -ngl 999  -b 1024  -p "hello"
