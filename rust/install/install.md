@@ -23,10 +23,9 @@ vi ~/.cargo/config.toml
 add config
 ```sh
 [source.crates-io]
-replace-with = 'tuna'
-
-[source.tuna]
-registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+replace-with = 'aliyun'
+[source.aliyun]
+registry = "sparse+https://mirrors.aliyun.com/crates.io-index/"
 ```
 
 hello world

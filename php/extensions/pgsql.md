@@ -2,7 +2,7 @@
 
 ```sh
 sudo apt update
-sudo apt install libpq-dev
+sudo apt install libpq-dev -y
 cd ext/pdo_pgsql
 phpize
 ./configure

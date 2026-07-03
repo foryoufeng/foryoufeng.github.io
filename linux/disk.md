@@ -41,3 +41,8 @@ get current dir
 ```sh
 du -h --max-depth=1 | sort -hr | head -10
 ```
+
+see current dir all
+```sh
+du -sh * | sort -hr
+```
